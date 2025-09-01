@@ -81,6 +81,5 @@ end
 
 gem 'carrierwave'
 
-group :development do
-  gem 'i18n_generators'
-end
+gem 'i18n_generators'
+gem 'rails-i18n'
