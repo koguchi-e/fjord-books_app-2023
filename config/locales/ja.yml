@@ -2,15 +2,18 @@
 ja:
   book:
     title: "タイトル"
-    memo: "概要"
+    memo: "メモ"
     author: "著者"
-    picture: "画像"
+    picture: "写真"
+    index: "書籍一覧"
+    new: "書籍新規作成"
+    edit: "書籍編集"
   button:
+    index: "一覧"
     new: "新規作成"
     edit: "編集"
     back: "戻る"
     show: "詳細"
-    index: "一覧"
     destroy: "削除"
   notice:
     create: "%{title} を作成しました！"
