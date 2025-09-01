@@ -1,2 +1,6 @@
 ja:
-  hello: "こんにちは"
+  book:
+    title: "タイトル"
+    memo: "概要"
+    author: "著者"
+    picture: "画像"
