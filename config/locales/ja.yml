@@ -7,6 +7,13 @@ ja:
     create: "書籍の作成が完了しました。"
     update: "書籍の更新が完了しました。"
     destroy: "書籍は削除されました。"
+  helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"
+      book:
+        create: "登録"
+        update: "更新"
   New book: "新規登録"
   Back to books: "一覧へ戻る"
   Show this book: "書籍の詳細"
