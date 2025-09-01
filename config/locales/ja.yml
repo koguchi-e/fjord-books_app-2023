@@ -12,6 +12,10 @@ ja:
     show: "詳細"
     index: "一覧"
     destroy: "削除"
+  notice:
+    create: "%{title} を作成しました！"
+    update: "%{title} を編集しました！"
+    destroy: "%{title} を削除しました！"
   activerecord:
     errors:
       messages:
