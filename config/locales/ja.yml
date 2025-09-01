@@ -6,7 +6,7 @@ ja:
     author: "著者"
     picture: "写真"
     index: "書籍一覧"
-    new: "書籍新規作成"
+    new: "新規作成"
     edit: "書籍編集"
   button:
     index: "一覧"
