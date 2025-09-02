@@ -1,0 +1,9 @@
+ja:
+  books:
+    index: 
+      page-title: "書籍一覧"
+    new: 
+      page-title: "新規作成"
+    edit: 
+      page-title: "書籍編集"
+  
