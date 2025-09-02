@@ -10,6 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <%= link_to('日本語', :locale => 'ja') %> | 
+  <%= link_to('English', :locale => 'en') %>
+
   <body class="<%= params[:action] %>">
     <%= yield %>
   </body>
