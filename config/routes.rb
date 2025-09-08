@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  get 'users/edit'
   devise_for :users
+  resources :users, only: [:index, :show, :edit]
   resources :books
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
