@@ -31,12 +31,11 @@
 
 en:
   button:
-    index: "index"
-    new: "New book"
-    edit: "Edit this book"
-    back: "Back to books"
-    show: "Show this book"
-    destroy: "Destroy this book"
+    new_book: "New book"
+    edit_book: "Edit this book"
+    back_to_books: "Back to books"
+    show_book: "Show this book"
+    destroy_book: "Destroy this book"
   notice:
     create: "Successfully created '%{title}'"
     update: "The edit of '%{title}' was successful."

@@ -1,11 +1,10 @@
 ja:
   button:
-    index: "一覧"
-    new: "新規作成"
-    edit: "編集"
-    back: "戻る"
-    show: "詳細"
-    destroy: "削除"
+    new_book: "書籍新規作成"
+    edit_book: "この書籍を編集"
+    back_to_books: "一覧へ戻る"
+    show_book: "書籍の詳細"
+    destroy_book: "この書籍を削除"
   notice:
     create: "%{title} を作成しました！"
     update: "%{title} を編集しました！"
