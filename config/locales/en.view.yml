@@ -1,0 +1,8 @@
+en:
+  books:
+    index: 
+      page_title: "Books"
+    new: 
+      page_title: "New Books"
+    edit: 
+      page_title: "Editing Books"

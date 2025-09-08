@@ -30,4 +30,16 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  button:
+    index: "index"
+    new: "New book"
+    edit: "Edit this book"
+    back: "Back to books"
+    show: "Show this book"
+    destroy: "Destroy this book"
+  notice:
+    create: "Successfully created '%{title}'"
+    update: "The edit of '%{title}' was successful."
+    destroy: "The item '%{title}' was successfully deleted."
+  errors:
+    header: "There were %{count} errors during the registration of %{model}."
