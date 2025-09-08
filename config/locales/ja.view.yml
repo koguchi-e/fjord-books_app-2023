@@ -1,9 +1,8 @@
 ja:
   books:
     index: 
-      page-title: "書籍一覧"
+      page_title: "書籍一覧"
     new: 
-      page-title: "新規作成"
+      page_title: "新規作成"
     edit: 
-      page-title: "書籍編集"
-  
+      page_title: "書籍編集"
