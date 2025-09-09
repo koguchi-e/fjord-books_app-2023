@@ -14,7 +14,7 @@ en:
         name: Name
         email: Email
         post_code: Post Code
-        adress: Adress
+        address: Adress
         introduction: Introduction
         password: Password
         Password_confirmation: Password confirmation
