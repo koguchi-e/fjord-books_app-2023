@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:index, :show, :edit]
+  resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :books
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
