@@ -16,3 +16,5 @@ en:
         post_code: Post Code
         adress: Adress
         introduction: Introduction
+        password: Password
+        Password_confirmation: Password confirmation

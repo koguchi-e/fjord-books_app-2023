@@ -4,7 +4,24 @@ en:
       page_title: "Users"
     edit: 
       page_title: "Editing users"
+  devise:
+    sessions:
+      new:
+        page_title: "Log in"
+        remember_me: "Remember me"
+    registrations:
+      new:
+        page_title: "Sign up"
+        characters_minimum: "characters minimum"
+    passwords:
+      new:
+        page_title: "Forgot your password?"
   button:
     index_users: "users"
     edit_user: "Edit this user"
     show_user: "Show this user"
+    index_books: "books"
+    login: "Login"
+    logout: "Logout"
+    sign_up: "Sign up"
+    forgot_your_password: "Forgot your password?"

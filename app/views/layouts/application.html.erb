@@ -26,11 +26,11 @@
       <b><%= current_user.name %></b>
     <% end %> | 
     <%= link_to t("button.index_users"), users_path, class: "navbar-link" %> |
-    <%= link_to "books", books_path, class: "navbar-link" %> |
-    <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %>
+    <%= link_to t("button.index_books"), books_path, class: "navbar-link" %> |
+    <%= link_to t("button.logout"), destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %>
   <% else %>
-    <%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> |
-    <%= link_to "Login", new_user_session_path, class: "navbar-link"  %>
+    <%= link_to t("button.sign_up"), new_user_registration_path, class: "navbar-link"  %> |
+    <%= link_to t("button.login"), new_user_session_path, class: "navbar-link"  %>
   <% end %>
   </p>
   <p><%= link_to '日本語', locale: 'ja' %> | <%= link_to 'English', locale: 'en' %></p>
