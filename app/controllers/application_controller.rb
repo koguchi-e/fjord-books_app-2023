@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :require_login
   around_action :switch_locale
 
   protected
@@ -12,6 +13,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  # def require_login
+  #   unless logged_in?
+  #     flash[:error] = "このページにアクセスするにはログインが必要です。"
+  #     redirect_to new_login_url
+  #   end
+  # end
 
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
