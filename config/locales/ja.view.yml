@@ -1,0 +1,10 @@
+ja:
+  users:
+    index: 
+      page_title: "ユーザー一覧"
+    edit: 
+      page_title: "ユーザー編集"
+  button:
+    index_users: "ユーザー一覧"
+    edit_user: "このユーザーを編集"
+    show_user: "ユーザーの詳細"

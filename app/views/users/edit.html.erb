@@ -1,3 +1,4 @@
+<h1><%= t('.page_title') %></h1>
 <%= form_with(model: @user) do |form| %>
   <% if @user.errors.any? %>
     <div style="color: red">
@@ -12,27 +13,27 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
+    <b><%= User.human_attribute_name(:name) %></b>：<br>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
+    <b><%= User.human_attribute_name(:email) %></b>：<br>
     <%= form.text_field :email %>
   </div>
 
   <div>
-    <%= form.label :post_code, style: "display: block" %>
+    <b><%= User.human_attribute_name(:post_code) %></b>：<br>
     <%= form.text_field :post_code %>
   </div>
 
   <div>
-    <%= form.label :address, style: "display: block" %>
+    <b><%= User.human_attribute_name(:address) %></b>：<br>
     <%= form.text_field :address %>
   </div>
 
   <div>
-    <%= form.label :introduction, style: "display: block" %>
+    <b><%= User.human_attribute_name(:introduction) %></b>：<br>
     <%= form.text_area :introduction %>
   </div>
 

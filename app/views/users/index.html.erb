@@ -1,4 +1,4 @@
-<h1>Users#index</h1>
+<h1><%= t('.page_title') %></h1>
 <ul>
   <% @users.each do |user| %>
     <%= link_to user_path(user.id) do %>

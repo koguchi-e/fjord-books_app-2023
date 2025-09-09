@@ -1,24 +1,23 @@
-<h1>Users#show</h1>
 <p>
-  <b>名前</b>：<br>
+  <b><%= User.human_attribute_name(:name) %></b>：<br>
   <%= @user.name %>
 </p>
 <p>
-  <b>メールアドレス</b>：<br>
+  <b><%= User.human_attribute_name(:email) %></b>：<br>
   <%= @user.email %>
 </p>
 <p>
-  <b>郵便番号</b>：<br>
+  <b><%= User.human_attribute_name(:post_code) %></b>：<br>
   <%= @user.post_code %>
 </p>
 <p>
-  <b>住所</b>：<br>
+  <b><%= User.human_attribute_name(:address) %></b>：<br>
   <%= @user.address %>
 </p>
 <p>
-  <b>自己紹介</b>：<br>
+  <b><%= User.human_attribute_name(:introduction) %></b>：<br>
   <%= @user.introduction %>
 </p>
 
-  <%= link_to "Editing user", edit_user_path(@user), class: "navbar-link" %>
+<%= link_to t("button.edit_user"), edit_user_path(@user), class: "navbar-link" %>
 

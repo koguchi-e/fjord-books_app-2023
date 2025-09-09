@@ -1,0 +1,10 @@
+en:
+  users:
+    index: 
+      page_title: "Users"
+    edit: 
+      page_title: "Editing users"
+  button:
+    index_users: "users"
+    edit_user: "Edit this user"
+    show_user: "Show this user"
