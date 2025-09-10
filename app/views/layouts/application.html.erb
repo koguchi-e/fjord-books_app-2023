@@ -21,7 +21,7 @@
   </div>
   <p class="navbar-text float-right">
   <% if user_signed_in? %>
-    Logged in as 
+    <%= t(".Logged_in_as") %>
     <%= link_to user_path(current_user.id), class: "navbar-link" do %>
       <b><%= current_user.name %></b>
     <% end %> | 

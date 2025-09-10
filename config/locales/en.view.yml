@@ -1,4 +1,7 @@
 en:
+  layouts:
+    application:
+      Logged_in_as: "Logged in as: "
   users:
     index: 
       page_title: "Users"

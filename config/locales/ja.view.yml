@@ -1,4 +1,7 @@
 ja:
+  layouts:
+    application:
+      Logged_in_as: "ログイン中： "
   users:
     index: 
       page_title: "ユーザー一覧"
