@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
-      redirect_to edit_user_path(@user)
+      redirect_to edit_user_registration
     end
   end
 

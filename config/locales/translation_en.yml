@@ -18,3 +18,4 @@ en:
         introduction: Introduction
         password: Password
         Password_confirmation: Password confirmation
+        current_password: Current password
