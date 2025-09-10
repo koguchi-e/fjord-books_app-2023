@@ -19,5 +19,7 @@
   <%= @user.introduction %>
 </p>
 
-<%= link_to t("button.edit_user"), edit_user_registration_path, class: "navbar-link" %>
+<% if @user.id == current_user.id %>
+  <%= link_to t("button.edit_user"), edit_user_registration_path, class: "navbar-link" %>
+<% end %>
 

@@ -9,15 +9,20 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+    if @user = current_user
+      render edit_user_registration
+    else
+      redirect_to users_path
+    end
+  end
+
   def update
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
       redirect_to edit_user_registration
     end
-  end
-
-  def edit
   end
 
   private
