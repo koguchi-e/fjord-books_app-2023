@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   def index
-   @users = User.all
+    @users = User.all
   end
 
-  def show
-  end
+  def show; end
 
   def edit
-    if @user = current_user
+    if @user == current_user
       render edit_user_registration
     else
       redirect_to users_path
