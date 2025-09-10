@@ -2,8 +2,6 @@ ja:
   users:
     index: 
       page_title: "ユーザー一覧"
-    edit: 
-      page_title: "ユーザー編集"
   devise:
     sessions:
       new:
@@ -13,6 +11,12 @@ ja:
       new:
         page_title: "サインアップ"
         characters_minimum: "文字以上入力してください"
+      edit: 
+        page_title: "編集"
+        characters_minimum: "文字以上入力してください"
+        leave_blank: "変更したくない場合は、空白のままにしてください"
+        confirm_current_password: "変更内容を確認するために、現在のパスワードが必要です。"
+        cancel: "アカウントを削除する"
     passwords:
       new:
         page_title: "パスワードをお忘れの場合"

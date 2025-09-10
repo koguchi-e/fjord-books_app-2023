@@ -2,8 +2,6 @@ en:
   users:
     index: 
       page_title: "Users"
-    edit: 
-      page_title: "Editing users"
   devise:
     sessions:
       new:
@@ -13,6 +11,12 @@ en:
       new:
         page_title: "Sign up"
         characters_minimum: "characters minimum"
+      edit: 
+        page_title: "Edit"
+        characters_minimum: "characters minimum"
+        leave_blank: "leave blank if you don't want to change it"
+        confirm_current_password: "we need your current password to confirm your changes"
+        cancel: "Cancel my account"
     passwords:
       new:
         page_title: "Forgot your password?"
