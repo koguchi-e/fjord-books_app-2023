@@ -12,11 +12,10 @@ en:
         page_title: "Sign up"
         characters_minimum: "characters minimum"
       edit: 
-        page_title: "Edit"
+        page_title: "Edit User"
         characters_minimum: "characters minimum"
         leave_blank: "leave blank if you don't want to change it"
         confirm_current_password: "we need your current password to confirm your changes"
-        cancel: "Cancel my account"
     passwords:
       new:
         page_title: "Forgot your password?"
@@ -30,3 +29,6 @@ en:
     sign_up: "Sign up"
     forgot_your_password: "Forgot your password?"
     back: "Back"
+    Cancel_my_account: "Cancel my account"
+  confirmations:
+    cancel_account: "Are you sure?"

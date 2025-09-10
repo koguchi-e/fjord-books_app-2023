@@ -1,4 +1,4 @@
-<h2><%= t(".page_title") %> <%= resource_name.to_s.humanize %></h2>
+<h2><%= t(".page_title") %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -12,14 +12,29 @@
     <%= f.text_field :name %>
   </div>
 
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
   <div>
     <b><%= User.human_attribute_name(:email) %></b>：<br>
     <%= f.text_field :email %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <div>
+    <b><%= User.human_attribute_name(:post_code) %></b>：<br>
+    <%= f.text_field :post_code %>
+  </div>
+
+  <div>
+    <b><%= User.human_attribute_name(:address) %></b>：<br>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <b><%= User.human_attribute_name(:introduction) %></b>：<br>
+    <%= f.text_area :introduction %>
+  </div>
 
   <div class="field">
     <b><%= User.human_attribute_name(:password) %></b>：
@@ -43,29 +58,13 @@
   </div>
 
   <div>
-    <b><%= User.human_attribute_name(:post_code) %></b>：<br>
-    <%= f.text_field :post_code %>
-  </div>
-
-  <div>
-    <b><%= User.human_attribute_name(:address) %></b>：<br>
-    <%= f.text_field :address %>
-  </div>
-
-  <div>
-    <b><%= User.human_attribute_name(:introduction) %></b>：<br>
-    <%= f.text_area :introduction %>
-  </div>
-
-  <div>
     <%= f.submit %>
   </div>
 <% end %>
 
-<div>
-  <h3><%= t(".cancel") %></h3>
-  Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
-</div>
+<p>
+  <%= button_to t("button.Cancel_my_account"), registration_path(resource_name), data: { confirm: t("confirmations.cancel_account"), turbo_confirm: t("confirmations.cancel_account") }, method: :delete %>
+</p>
 
 <p>
   <%= link_to t("button.back"), :back %>
