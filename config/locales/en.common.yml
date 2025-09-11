@@ -37,8 +37,8 @@ en:
     show_book: "Show this book"
     destroy_book: "Destroy this book"
   notice:
-    create: "%{title} was successfully created."
-    update: "%{title} was successfully updated."
-    destroy: "%{title} was successfully destroyed."
+    create: "%{book} was successfully created."
+    update: "%{book} was successfully updated."
+    destroy: "%{book} was successfully destroyed."
   errors:
     header: "There were %{count} errors during the registration of %{model}."

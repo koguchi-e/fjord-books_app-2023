@@ -1,7 +1,7 @@
 en:
   activerecord:
     models:
-      book: books
+      book: Book
 
     attributes:
       book:
