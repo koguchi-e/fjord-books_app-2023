@@ -22,6 +22,12 @@ en:
     passwords:
       new:
         page_title: "Forgot your password?"
+      edit:
+        page_title: "Change your password"
+        New password: "New password"
+        characters_minimum: "characters minimum"
+        Confirm new password: "Confirm new password"
+        Change my password: "Change my password"
   button:
     index_users: "users"
     edit_user: "Edit this user"

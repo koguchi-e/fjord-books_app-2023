@@ -22,6 +22,12 @@ ja:
     passwords:
       new:
         page_title: "パスワードをお忘れの場合"
+      edit:
+        page_title: "パスワード変更"
+        New password: "新しいパスワード"
+        characters_minimum: "文字以上入力してください"
+        Confirm new password: "確認用パスワード"
+        Change my password: "パスワードを変更する"
   button:
     index_users: "ユーザー一覧"
     edit_user: "このユーザーを編集"
