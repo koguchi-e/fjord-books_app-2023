@@ -6,9 +6,9 @@ ja:
     show_book: "書籍の詳細"
     destroy_book: "この書籍を削除"
   notice:
-    create: "%{book} を作成しました！"
-    update: "%{book} を編集しました！"
-    destroy: "%{book} を削除しました！"
+    create: "%{model} を作成しました！"
+    update: "%{model} を編集しました！"
+    destroy: "%{model} を削除しました！"
   errors:
     header: "%{model} の登録で %{count} 件のエラーが発生しました。"
   activerecord:
