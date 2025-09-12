@@ -7,7 +7,7 @@
     <%= f.label User.human_attribute_name(:name) %><br>
     <%= f.text_field :name %>
   </div>
-  
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -33,7 +33,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> 
+    <%= f.label :password %>
     <i>(<%= t(".leave_blank") %>)</i><br>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
@@ -48,7 +48,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> 
+    <%= f.label :current_password %>
     <i>(<%= t(".confirm_current_password") %>)</i><br>
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>

@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to t("button.login"), new_user_session_path, class: "navbar-link"  %><br>
+  <%= link_to t("button.login"), new_user_session_path, class: "navbar-link" %><br>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to t("button.sign_up"), new_user_registration_path, class: "navbar-link"  %><br />
+  <%= link_to t("button.sign_up"), new_user_registration_path, class: "navbar-link" %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
