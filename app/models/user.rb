@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
   validate :avatar_content_type
-  
+
   def avatar_content_type
-    if avatar.attached? && !avatar.content_type.in?(%w[avatar/jpeg avatar/png avatar/gif])
-      errors.add(:avatar, 'ファイル形式は、jpg/png/gifのいずれかにしてください。')
-    end
+    return unless avatar.attached? && !avatar.content_type.in?(%w[image/jpeg image/png image/gif])
+
+    errors.add(:avatar, 'ファイル形式は、jpg/png/gifのいずれかにしてください。')
   end
 end
