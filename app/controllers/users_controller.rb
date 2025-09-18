@@ -1,29 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show]
 
   def index
     @users = User.order(created_at: :asc).page(params[:page])
   end
 
   def show; end
-
-  def edit
-    if @user == current_user
-      render edit_user_registration
-    else
-      redirect_to users_path
-    end
-  end
-
-  def update
-    if @user.update(user_params)
-      redirect_to user_path(@user)
-    else
-      redirect_to edit_user_registration
-    end
-  end
 
   private
 
