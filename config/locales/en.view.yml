@@ -29,10 +29,9 @@ en:
         Confirm new password: "Confirm new password"
         Change my password: "Change my password"
   button:
-    index_users: "users"
-    edit_user: "Edit this user"
-    show_user: "Show this user"
-    index_books: "books"
+    index: "index %{name}s"
+    edit: "Edit this %{name}"
+    show: "Show"
     login: "Login"
     logout: "Logout"
     sign_up: "Sign up"

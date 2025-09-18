@@ -29,10 +29,9 @@ ja:
         Confirm new password: "確認用パスワード"
         Change my password: "パスワードを変更する"
   button:
-    index_users: "ユーザー一覧"
-    edit_user: "このユーザーを編集"
-    show_user: "ユーザーの詳細"
-    index_books: "書籍一覧"
+    index: "%{name}一覧"
+    edit: "この%{name}を編集"
+    show: "%{name}の詳細"
     login: "ログイン"
     logout: "ログアウト"
     sign_up: "サインアップ"
