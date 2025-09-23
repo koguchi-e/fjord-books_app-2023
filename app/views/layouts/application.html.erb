@@ -20,15 +20,15 @@
       <% end %>
     </div>
     <p class="navbar-text float-right">
-    <% if user_signed_in? %>
-      <%= t(".Logged_in_as") %>
-      <%= link_to user_path(current_user.id), class: "navbar-link" do %>
-        <b><%= current_user.name %></b>
-      <% end %> |
-      <%= link_to t("button.index", name: User.model_name.human), users_path, class: "navbar-link" %> |
-      <%= link_to t("button.index", name:Book.model_name.human), books_path, class: "navbar-link" %> |
-      <%= link_to t("button.logout"), destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link" %>
-    <% end %>
+      <% if user_signed_in? %>
+        <%= t(".Logged_in_as") %>
+        <%= link_to user_path(current_user.id), class: "navbar-link" do %>
+          <b><%= current_user.name %></b>
+        <% end %> |
+        <%= link_to t("button.index", name: User.model_name.human), users_path, class: "navbar-link" %> |
+        <%= link_to t("button.index", name:Book.model_name.human), books_path, class: "navbar-link" %> |
+        <%= link_to t("button.logout"), destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link" %>
+      <% end %>
     </p>
     <p><%= link_to '日本語', locale: 'ja' %> | <%= link_to 'English', locale: 'en' %></p>
     <%= yield %>
