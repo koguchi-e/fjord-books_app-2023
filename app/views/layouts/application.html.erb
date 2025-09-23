@@ -26,7 +26,7 @@
           <b><%= current_user.name %></b>
         <% end %> |
         <%= link_to t("button.index", name: User.model_name.human), users_path, class: "navbar-link" %> |
-        <%= link_to t("button.index", name:Book.model_name.human), books_path, class: "navbar-link" %> |
+        <%= link_to t("button.index", name: Book.model_name.human), books_path, class: "navbar-link" %> |
         <%= link_to t("button.logout"), destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link" %>
       <% end %>
     </p>
