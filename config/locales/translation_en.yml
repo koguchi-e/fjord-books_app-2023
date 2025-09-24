@@ -2,10 +2,21 @@ en:
   activerecord:
     models:
       book: Book
-
+      report:
+        one: report
+        other: reports
     attributes:
       book:
         author: Author
         memo: Memo
         picture: Picture
         title: Title
+      report:
+        title: Title
+        body: Body
+    button:
+      new_path: "New %{model}"
+      edit_path: "Edit this %{model}"
+      back_to_path: "Back to %{model}"
+      show_path: "Show this %{model}"
+      destroy_path: "Destroy this %{model}"
