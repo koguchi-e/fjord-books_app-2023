@@ -1,9 +1,12 @@
 ja:
   activerecord:
     models:
-      book: 本
-      user: ユーザー
-
+      book:
+        one: 本
+        other: 本
+      user:
+        one: ユーザー
+        other: ユーザー
     attributes:
       book:
         author: 著者
