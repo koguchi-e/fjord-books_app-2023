@@ -1,14 +1,11 @@
 <p style="color: green"><%= notice %></p>
-
-<h1><%= Report.model_name.human(count: 1) %></h1>
-
+<h1><%= Report.model_name.human(count: 2) %></h1>
 <div id="reports">
   <% @reports.each do |report| %>
     <%= render report %>
     <p>
-      <%= link_to "Show this report", report %>
+      <%= link_to t("button.show", model: Report.model_name.human(count: 1)), report %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New report", new_report_path %>
+<%= link_to t("button.new", model: Report.model_name.human(count: 1)), new_report_path %>

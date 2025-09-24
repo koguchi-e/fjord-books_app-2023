@@ -1,9 +1,6 @@
-<h1>New report</h1>
-
+<h1><%= t("page_title.new", model: Report.model_name.human(count: 1)) %></h1>
 <%= render "form", report: @report %>
-
 <br>
-
 <div>
-  <%= link_to "Back to reports", reports_path %>
+  <%= link_to t("button.back", model: Report.model_name.human(count: 2)), reports_path %>
 </div>

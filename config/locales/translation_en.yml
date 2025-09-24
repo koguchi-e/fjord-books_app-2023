@@ -3,8 +3,8 @@ en:
     models:
       book: Book
       report:
-        one: report
-        other: reports
+        one: Report
+        other: Reports
     attributes:
       book:
         author: Author
@@ -14,9 +14,13 @@ en:
       report:
         title: Title
         body: Body
-    button:
-      new_path: "New %{model}"
-      edit_path: "Edit this %{model}"
-      back_to_path: "Back to %{model}"
-      show_path: "Show this %{model}"
-      destroy_path: "Destroy this %{model}"
+  page_title:
+    new: "New %{model}"
+    edit: "Editing %{model}"
+  button:
+    new: "New %{model}"
+    index: "%{model}"
+    edit: "Edit this %{model}"
+    back: "Back to %{model}"
+    show: "Show this %{model}"
+    destroy: "Destroy this %{model}"

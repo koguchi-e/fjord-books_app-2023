@@ -21,9 +21,13 @@ ja:
       report:
         title: タイトル
         body: 本文
-    button:
-      new_path: "%{model}新規作成"
-      edit_path: "この%{model}を編集"
-      back_to_path: "%{model}に戻る"
-      show_path: "この%{model}の詳細"
-      destroy_path: "この%{model}を削除"
+  page_title:
+    new: "%{model} 新規作成"
+    edit: "%{model}編集"
+  button:
+    new: "%{model}新規作成"
+    index: "%{model}の一覧へ"
+    edit: "この%{model}を編集"
+    back: "%{model}に戻る"
+    show: "この%{model}の詳細"
+    destroy: "この%{model}を削除"
