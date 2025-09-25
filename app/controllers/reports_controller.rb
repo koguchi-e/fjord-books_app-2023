@@ -7,7 +7,9 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1 or /reports/1.json
-  def show; end
+  def show
+    @comment = @report.comments.build
+  end
 
   # GET /reports/new
   def new

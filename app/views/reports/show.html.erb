@@ -4,6 +4,8 @@
   <%= render @report %>
 </div>
 
+<%= render "comments/form", report: @report, comment: @comment %>
+
 <nav class="page-nav">
   <% if @report.user.id == current_user.id %>
     <%= link_to t("button.edit", model: Report.model_name.human(count: 1)), edit_report_path(@report) %> |
