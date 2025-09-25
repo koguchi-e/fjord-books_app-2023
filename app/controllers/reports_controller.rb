@@ -7,8 +7,7 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1 or /reports/1.json
-  def show
-  end
+  def show; end
 
   # GET /reports/new
   def new
@@ -17,11 +16,16 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+    if @report.user_id == current_user.id
+      render "edit"
+    else
+      redirect_to reports_path
+    end
   end
 
   # POST /reports or /reports.json
   def create
-    @report = Report.new(report_params)
+    @report = current_user.reports.build(report_params)
 
     respond_to do |format|
       if @report.save
