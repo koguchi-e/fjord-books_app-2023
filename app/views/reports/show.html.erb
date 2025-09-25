@@ -1,7 +1,12 @@
+<h1><%= t("page_title.show", model: Report.model_name.human(count: 1)) %></h1>
+
 <p style="color: green"><%= notice %></p>
-<%= render @report %>
-<div>
+<div class="show-item">
+  <%= render @report %>
+</div>
+
+<nav class="page-nav">
   <%= link_to t("button.edit", model: Report.model_name.human(count: 1)), edit_report_path(@report) %> |
   <%= link_to t("button.index", model: Report.model_name.human(count: 2)), reports_path %>
   <%= button_to t("button.destroy", model: Report.model_name.human(count: 1)), @report, method: :delete %>
-</div>
+</nav>

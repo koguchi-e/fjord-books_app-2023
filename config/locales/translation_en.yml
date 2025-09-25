@@ -17,6 +17,7 @@ en:
   page_title:
     new: "New %{model}"
     edit: "Editing %{model}"
+    show: "%{model} details"
   button:
     new: "New %{model}"
     index: "%{model}"

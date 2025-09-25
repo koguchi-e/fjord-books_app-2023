@@ -1,7 +1,7 @@
 <h1><%= t("page_title.edit", model: Report.model_name.human(count: 1)) %></h1>
 <%= render "form", report: @report %>
 <br>
-<div>
+<nav class="page-nav">
   <%= link_to t("button.show", model: Report.model_name.human(count: 1)), @report %> |
   <%= link_to t("button.back", model: Report.model_name.human(count: 2)), reports_path %>
-</div>
+</nav>
