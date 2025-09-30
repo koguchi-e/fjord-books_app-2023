@@ -21,7 +21,9 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.Comment.new(comment_params)
+    @comment.save
+    redirect_to reports_path
 
     respond_to do |format|
       if @comment.save

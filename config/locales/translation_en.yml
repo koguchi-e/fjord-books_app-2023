@@ -5,6 +5,9 @@ en:
       report:
         one: Report
         other: Reports
+      comment:
+        one: Comment
+        other: Comments
     attributes:
       book:
         author: Author

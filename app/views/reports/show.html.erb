@@ -4,6 +4,11 @@
   <%= render @report %>
 </div>
 
+<p></p>
+<div class="show-item">
+  <%= render "comments/comment", report: @report, comment: @comment %>
+</div>
+
 <%= render "comments/form", report: @report, comment: @comment %>
 
 <nav class="page-nav">

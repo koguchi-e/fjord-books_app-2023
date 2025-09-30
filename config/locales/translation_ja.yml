@@ -6,6 +6,9 @@ ja:
       report:
         one: 日報
         other: 日報
+      comment:
+        one: コメント
+        other: コメント
     attributes:
       book:
         author: 著者
