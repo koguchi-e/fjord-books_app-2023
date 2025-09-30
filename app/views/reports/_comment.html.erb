@@ -7,9 +7,10 @@
         <%= comment.user.email %>
       <% end %>
     <% end %>
-    <%= comment.created_at %>
     <br>
     <%= comment.body %>
+    <br>
+    <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
     <hr style="border: none; border-top: 1px dotted gray;">
   <% end %>
 </div>
