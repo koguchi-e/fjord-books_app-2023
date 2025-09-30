@@ -1,0 +1,24 @@
+<p>
+  <b><%= User.human_attribute_name(:name) %></b>：<br>
+  <%= @user.name %>
+</p>
+<p>
+  <b><%= User.human_attribute_name(:email) %></b>：<br>
+  <%= @user.email %>
+</p>
+<p>
+  <b><%= User.human_attribute_name(:post_code) %></b>：<br>
+  <%= @user.post_code %>
+</p>
+<p>
+  <b><%= User.human_attribute_name(:address) %></b>：<br>
+  <%= @user.address %>
+</p>
+<p>
+  <b><%= User.human_attribute_name(:introduction) %></b>：<br>
+  <%= @user.introduction %>
+</p>
+
+<% if @user.id == current_user.id %>
+  <%= link_to t("button.edit", name: User.model_name.human(count: 1)), edit_user_registration_path, class: "navbar-link" %>
+<% end %>

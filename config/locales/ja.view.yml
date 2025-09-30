@@ -1,0 +1,42 @@
+ja:
+  layouts:
+    application:
+      Logged_in_as: "ログイン中： "
+  users:
+    index: 
+      page_title: "ユーザー一覧"
+  devise:
+    sessions:
+      new:
+        page_title: "ログイン"
+        remember_me: "ログインを保持させる"
+    registrations:
+      new:
+        page_title: "サインアップ"
+        characters_minimum: "文字以上入力してください"
+      edit: 
+        page_title: "ユーザー編集"
+        characters_minimum: "文字以上入力してください"
+        leave_blank: "変更したくない場合は、空白のままにしてください"
+        confirm_current_password: "変更内容を確認するために、現在のパスワードが必要です。"
+    passwords:
+      new:
+        page_title: "パスワードをお忘れの場合"
+      edit:
+        page_title: "パスワード変更"
+        New password: "新しいパスワード"
+        characters_minimum: "文字以上入力してください"
+        Confirm new password: "確認用パスワード"
+        Change my password: "パスワードを変更する"
+  button:
+    index: "%{name}一覧"
+    edit: "この%{name}を編集"
+    show: "%{name}の詳細"
+    login: "ログイン"
+    logout: "ログアウト"
+    sign_up: "サインアップ"
+    forgot_your_password: "パスワードをお忘れの場合"
+    back: "戻る"
+    Cancel_my_account: "アカウントを削除する"
+  confirmations:
+    cancel_account: "本当に削除してよろしいですか？"

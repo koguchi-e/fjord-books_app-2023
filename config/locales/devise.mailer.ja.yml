@@ -1,0 +1,8 @@
+ja:
+  devise:
+    mailer:
+      reset_password_instructions:
+        greeting: "%{email} 様"
+        introduction: "パスワードをリセットするには、下記のリンクをクリックしてください。"
+        Change my password: "パスワードをリセットする"
+        notes: "このメールが不要な場合は、そのまま無視してください。上記のリンクにアクセスして新しいパスワードを設定するまで、パスワードは変更されません。"

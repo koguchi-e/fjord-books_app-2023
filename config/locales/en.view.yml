@@ -1,0 +1,42 @@
+en:
+  layouts:
+    application:
+      Logged_in_as: "Logged in as: "
+  users:
+    index: 
+      page_title: "Users"
+  devise:
+    sessions:
+      new:
+        page_title: "Log in"
+        remember_me: "Remember me"
+    registrations:
+      new:
+        page_title: "Sign up"
+        characters_minimum: "characters minimum"
+      edit: 
+        page_title: "Edit User"
+        characters_minimum: "characters minimum"
+        leave_blank: "leave blank if you don't want to change it"
+        confirm_current_password: "we need your current password to confirm your changes"
+    passwords:
+      new:
+        page_title: "Forgot your password?"
+      edit:
+        page_title: "Change your password"
+        New password: "New password"
+        characters_minimum: "characters minimum"
+        Confirm new password: "Confirm new password"
+        Change my password: "Change my password"
+  button:
+    index: "%{name}"
+    edit: "Edit this %{name}"
+    show: "Show"
+    login: "Login"
+    logout: "Logout"
+    sign_up: "Sign up"
+    forgot_your_password: "Forgot your password?"
+    back: "Back"
+    Cancel_my_account: "Cancel my account"
+  confirmations:
+    cancel_account: "Are you sure?"

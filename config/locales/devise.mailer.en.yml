@@ -1,0 +1,8 @@
+en:
+  devise:
+    mailer:
+      reset_password_instructions:
+        greeting: "Hello %{email} !"
+        introduction: "Someone has requested a link to change your password. You can do this through the link below."
+        Change my password: "Change my password"
+        notes: "If you didn't request this, please ignore this email. Your password won't change until you access the link above and create a new one."

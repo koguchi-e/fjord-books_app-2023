@@ -1,11 +1,24 @@
 en:
   activerecord:
     models:
-      book: Book
-
+      book:
+        one: Book
+        other: Books
+      user:
+        one: User
+        other: Users
     attributes:
       book:
         author: Author
         memo: Memo
         picture: Picture
         title: Title
+      user:
+        name: Name
+        email: Email
+        post_code: Post Code
+        address: Adress
+        introduction: Introduction
+        password: Password
+        Password_confirmation: Password confirmation
+        current_password: Current password
