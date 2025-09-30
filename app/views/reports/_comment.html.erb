@@ -1,0 +1,15 @@
+<div class="show-item">
+  <% @report.comments.each do |comment| %>
+    <%= link_to user_path(comment.user) do %>
+      <% if comment.user.name.present? %>
+        <%= comment.user.name %>
+      <% else %>
+        <%= comment.user.email %>
+      <% end %>
+    <% end %>
+    <%= comment.created_at %>
+    <br>
+    <%= comment.body %>
+    <hr style="border: none; border-top: 1px dotted gray;">
+  <% end %>
+</div>
