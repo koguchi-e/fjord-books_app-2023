@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
   before_action :set_report
+  before_action :set_book
 
   # GET /comments or /comments.json
   def index
@@ -64,6 +65,10 @@ class CommentsController < ApplicationController
 
     def set_report
       @report = Report.find(params[:report_id])
+    end
+
+    def set_book
+      @book = Book.find(params[:book_id])
     end
 
     # Only allow a list of trusted parameters through.

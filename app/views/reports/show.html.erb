@@ -4,7 +4,7 @@
   <%= render @report %>
 </div>
 
-<%= render "comment" %>
+<%= render "comments/comment", report: @report, comment: @comment %>
 
 <%= render "comments/form", report: @report, comment: @comment %>
 

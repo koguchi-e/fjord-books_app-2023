@@ -1,6 +1,22 @@
-<div id="<%= dom_id comment %>">
-  <p>
-    <strong><%= Comment.human_attribute_name(:body) %>:</strong>
+<div class="show-item">
+  <h3><%= t(Comment.model_name.human(count: 1)) %></h3>
+  <% commentable.comments.each do |comment| %>
+    <%= link_to user_path(comment.user) do %>
+      <% if comment.user.name.present? %>
+        <%= comment.user.name %>
+      <% else %>
+        <%= comment.user.email %>
+      <% end %>
+    <% end %>
+    <br>
     <%= comment.body %>
-  </p>
+    <br>
+    <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    <br>
+    <% if comment.user == current_user %>
+      <%= button_to t("button.destroy", model: Comment.model_name.human(count: 1)), report_comment_path(@report, comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+    <hr style="border: none; border-top: 1px dotted gray;">
+  <% end %>
 </div>
+
