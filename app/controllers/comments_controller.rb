@@ -20,11 +20,18 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @report = Report.find(params[:report_id])
+    @book = Book.find(params[:book_id])
     @comment = @report.comments.new(comment_params)
+    @comment = @book.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
     if @comment.save
       redirect_to @report
+    else
+      render :new
+    end
+    if @comment.save
+      redirect_to @book
     else
       render :new
     end
@@ -54,6 +61,17 @@ class CommentsController < ApplicationController
       end
     else
       redirect_to report_path(@report), alert: "権限がありません。"
+    end
+
+    book_comment = @book.comments.find(params[:id])
+    if book_comment.user == current_user
+      book_comment.destroy
+      respond_to do |format|
+        format.html { redirect_to book_path(@book), notice: "Comment was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to book_path(@book), alert: "権限がありません。"
     end
   end
 

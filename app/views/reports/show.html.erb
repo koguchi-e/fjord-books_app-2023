@@ -4,9 +4,9 @@
   <%= render @report %>
 </div>
 
-<%= render "comments/comment", report: @report, comment: @comment %>
+<%= render "comments/comment", commentable: @report %>
 
-<%= render "comments/form", report: @report, comment: @comment %>
+<%= render "comments/form",  commentable: @report %>
 
 <nav class="page-nav">
   <% if @report.user.id == current_user.id %>
