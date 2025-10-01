@@ -1,4 +1,5 @@
 <div class="show-item">
+  <h3><%= t(Comment.model_name.human(count: 1)) %></h3>
   <% @report.comments.each do |comment| %>
     <%= link_to user_path(comment.user) do %>
       <% if comment.user.name.present? %>
