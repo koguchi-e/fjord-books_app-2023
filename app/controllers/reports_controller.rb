@@ -62,7 +62,7 @@ class ReportsController < ApplicationController
         format.json { head :no_content }
       end
     else
-      redirect_to reports_path
+      redirect_to reports_path, alert: "権限がありません。"
     end
   end
 

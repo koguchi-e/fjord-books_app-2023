@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_report
 
   # GET /comments or /comments.json
   def index
@@ -26,16 +27,6 @@ class CommentsController < ApplicationController
     else
       render :new
     end
-
-    # respond_to do |format|
-    #   if @comment.save
-    #     format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
-    #     format.json { render :show, status: :created, location: @comment }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @comment.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /comments/1 or /comments/1.json
@@ -53,11 +44,15 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
-      format.json { head :no_content }
+    report_comment = @report.comments.find(params[:id])
+    if report_comment.user == current_user
+      report_comment.destroy
+      respond_to do |format|
+        format.html { redirect_to report_path(@report), notice: "Comment was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to report_path(@report), alert: "権限がありません。"
     end
   end
 
@@ -65,6 +60,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_report
+      @report = Report.find(params[:report_id])
     end
 
     # Only allow a list of trusted parameters through.
