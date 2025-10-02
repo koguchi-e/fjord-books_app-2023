@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-  before_action :set_report
-  before_action :set_book
+  before_action :set_commentable
 
   # GET /comments or /comments.json
   def index
@@ -19,19 +18,10 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @report = Report.find(params[:report_id])
-    @book = Book.find(params[:book_id])
-    @comment = @report.comments.new(comment_params)
-    @comment = @book.comments.new(comment_params)
+    @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    @comment.save
     if @comment.save
-      redirect_to @report
-    else
-      render :new
-    end
-    if @comment.save
-      redirect_to @book
+      redirect_to @commentable
     else
       render :new
     end
@@ -52,26 +42,20 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
-    report_comment = @report.comments.find(params[:id])
-    if report_comment.user == current_user
-      report_comment.destroy
+    comment = @commentable.comments.find(params[:id])
+    if comment.user == current_user
+      comment.destroy
       respond_to do |format|
-        format.html { redirect_to report_path(@report), notice: "Comment was successfully destroyed." }
-        format.json { head :no_content }
+        if params[:report_id]
+          format.html { redirect_to report_path(@commentable), notice: "Comment was successfully destroyed." }
+          format.json { head :no_content }
+        elsif params[:book_id]
+          format.html { redirect_to book_path(@commentable), notice: "Comment was successfully destroyed." }
+          format.json { head :no_content }
+        end
       end
     else
-      redirect_to report_path(@report), alert: "権限がありません。"
-    end
-
-    book_comment = @book.comments.find(params[:id])
-    if book_comment.user == current_user
-      book_comment.destroy
-      respond_to do |format|
-        format.html { redirect_to book_path(@book), notice: "Comment was successfully destroyed." }
-        format.json { head :no_content }
-      end
-    else
-      redirect_to book_path(@book), alert: "権限がありません。"
+      redirect_to report_path(@commentable), alert: "権限がありません。"
     end
   end
 
@@ -81,12 +65,12 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
-    def set_report
-      @report = Report.find(params[:report_id])
-    end
-
-    def set_book
-      @book = Book.find(params[:book_id])
+    def set_commentable
+      if params[:report_id]
+        @commentable = Report.find(params[:report_id])
+      elsif params[:book_id]
+        @commentable = Book.find(params[:book_id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
