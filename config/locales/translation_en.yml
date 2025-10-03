@@ -17,10 +17,14 @@ en:
       report:
         title: Title
         body: Body
+      comment:
+        body: Body
   page_title:
     new: "New %{model}"
     edit: "Editing %{model}"
     show: "%{model} details"
+  message:
+    error: "prohibited this %{model} from being saved:"
   button:
     new: "New %{model}"
     index: "%{model}"

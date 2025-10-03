@@ -24,10 +24,14 @@ ja:
       report:
         title: タイトル
         body: 本文
+      comment:
+        body: 本文
   page_title:
     new: "%{model} 新規作成"
     edit: "%{model}編集"
     show: "%{model}の詳細"
+  message:
+    error: "この %{model} は保存できませんでした。"
   button:
     new: "%{model}新規作成"
     index: "%{model}の一覧へ"

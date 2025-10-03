@@ -20,10 +20,15 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    if @comment.save
-      redirect_to @commentable
-    else
-      render :new
+    
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @commentable, notice: t("controllers.common.notice_create", name: Comment.model_name.human) }
+        format.json { render :show, status: :created, location: @comment }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -31,7 +36,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
+        format.html { redirect_to comment_url(@comment), notice: t("controllers.common.notice_update", name: Comment.model_name.human) }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,10 +52,10 @@ class CommentsController < ApplicationController
       comment.destroy
       respond_to do |format|
         if params[:report_id]
-          format.html { redirect_to report_path(@commentable), notice: "Comment was successfully destroyed." }
+          format.html { redirect_to report_path(@commentable), notice: t("controllers.common.notice_destroy", name: Comment.model_name.human) }
           format.json { head :no_content }
         elsif params[:book_id]
-          format.html { redirect_to book_path(@commentable), notice: "Comment was successfully destroyed." }
+          format.html { redirect_to book_path(@commentable), notice: t("controllers.common.notice_destroy", name: Comment.model_name.human) }
           format.json { head :no_content }
         end
       end
