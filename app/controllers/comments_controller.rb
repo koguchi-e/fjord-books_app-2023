@@ -26,8 +26,10 @@ class CommentsController < ApplicationController
         format.html { redirect_to @commentable, notice: t("controllers.common.notice_create", name: Comment.model_name.human) }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html do
+          flash[:alert] = @comment.errors.full_messages.to_sentence
+          redirect_to @commentable, status: :unprocessable_entity
+        end
       end
     end
   end
