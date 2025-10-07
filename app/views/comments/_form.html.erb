@@ -15,7 +15,7 @@
     <h3><%= t("page_title.new", model: Comment.model_name.human(count: 1)) %></h3>
     <div>
       <%= form.label :body, style: "display: block" %>
-      <%= form.text_field :body %>
+      <%= form.text_field :body, required: true %>
     </div>
 
     <div>
