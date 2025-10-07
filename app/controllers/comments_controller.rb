@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[edit update destroy]
   before_action :set_commentable
 
   # GET /comments or /comments.json
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    
+
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
@@ -80,7 +80,7 @@ class CommentsController < ApplicationController
   end
 
   private
-  
+
   # Use callbacks to share common setup or constraints between actions.
   def set_comment
     @comment = Comment.find(params[:id])
