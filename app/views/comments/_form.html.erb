@@ -1,4 +1,5 @@
 <% comment = @comment %>
+<% commentable = @commentable %>
 <%= form_with(model: [commentable, comment], local:true) do |form| %>
   <% if comment.errors.any? %>
     <div style="color: red">
@@ -12,7 +13,7 @@
   <% end %>
 
   <div class="index-item">
-    <h3><%= t("page_title.new", model: Comment.model_name.human(count: 1)) %></h3>
+    <h3><%= t("page_title.form", model: Comment.model_name.human(count: 1)) %></h3>
     <div>
       <%= form.label :body, style: "display: block" %>
       <%= form.text_field :body, required: true %>

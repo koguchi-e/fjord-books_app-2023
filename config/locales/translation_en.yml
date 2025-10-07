@@ -21,6 +21,7 @@ en:
         body: Body
   page_title:
     new: "New %{model}"
+    form: "%{model} Input form"
     edit: "Editing %{model}"
     show: "%{model} details"
   message:

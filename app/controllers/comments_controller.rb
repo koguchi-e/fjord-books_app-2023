@@ -14,6 +14,11 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    if @comment.user == current_user
+      render "edit"
+    else
+      redirect_to commentable_path
+    end
   end
 
   # POST /comments or /comments.json
@@ -36,14 +41,20 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: t("controllers.common.notice_update", name: Comment.model_name.human) }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+    comment = @commentable.comments.find(params[:id])
+    if comment.user == current_user
+      comment.update(comment_params)
+      respond_to do |format|
+        if params[:report_id]
+          format.html { redirect_to report_path(@commentable), notice: t("controllers.common.notice_update", name: Comment.model_name.human) }
+          format.json { head :no_content }
+        elsif params[:book_id]
+          format.html { redirect_to book_path(@commentable), notice: t("controllers.common.notice_update", name: Comment.model_name.human) }
+          format.json { head :no_content }
+        end
       end
+    else
+      redirect_to report_path(@commentable), alert: "権限がありません。"
     end
   end
 

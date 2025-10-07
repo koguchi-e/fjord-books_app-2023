@@ -28,6 +28,7 @@ ja:
         body: 本文
   page_title:
     new: "%{model} 新規作成"
+    form: "%{model} 入力フォーム"
     edit: "%{model}編集"
     show: "%{model}の詳細"
   message:
