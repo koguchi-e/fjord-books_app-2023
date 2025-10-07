@@ -1,25 +1,28 @@
 <div class="show-item">
   <h3><%= t(Comment.model_name.human(count: 1)) %></h3>
-  <% commentable.comments.each do |comment| %>
-    <%= link_to user_path(comment.user) do %>
-      <% if comment.user.name.present? %>
-        <%= comment.user.name %>
-      <% else %>
-        <%= comment.user.email %>
+  <% if @commentable.comments.any? %>
+    <% @commentable.comments.each do |comment| %>
+      <%= link_to user_path(comment.user) do %>
+        <% if comment.user.name.present? %>
+          <%= comment.user.name %>
+        <% else %>
+          <%= comment.user.email %>
+        <% end %>
       <% end %>
-    <% end %>
-    <br>
-    <%= comment.body %>
-    <br>
-    <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-    <% if comment.user == current_user %>
-      <% if @commentable.is_a?(Report) %>
-        <%= button_to t("button.destroy", model: Comment.model_name.human(count: 1)), report_comment_path(@commentable, comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-      <% else %>
-        <%= button_to t("button.destroy", model: Comment.model_name.human(count: 1)), book_comment_path(@commentable, comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      <br>
+      <%= comment.body %>
+      <br>
+      <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+      <% if comment.user == current_user %>
+        <% if @commentable.is_a?(Report) %>
+          <%= button_to t("button.destroy", model: Comment.model_name.human(count: 1)), report_comment_path(@commentable, comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        <% else %>
+          <%= button_to t("button.destroy", model: Comment.model_name.human(count: 1)), book_comment_path(@commentable, comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
       <% end %>
+      <hr style="border: none; border-top: 1px dotted gray;">
     <% end %>
-    <hr style="border: none; border-top: 1px dotted gray;">
+  <% else %>
+    <p>コメントは0件です。</p>
   <% end %>
 </div>
-
