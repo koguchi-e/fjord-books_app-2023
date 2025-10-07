@@ -11,8 +11,7 @@
     <br>
     <%= comment.body %>
     <br>
-    <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-    <br>
+    <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
     <% if comment.user == current_user %>
       <% if @commentable.is_a?(Report) %>
         <%= button_to t("button.destroy", model: Comment.model_name.human(count: 1)), report_comment_path(@commentable, comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
