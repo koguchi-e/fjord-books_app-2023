@@ -75,17 +75,4 @@ User.order(:id).each.with_index(1) do |user, n|
   user.avatar.attach(io: File.open(image_path), filename: 'avatar.png')
 end
 
-user = User.create!(
-  email: "test@example.com",
-  name: "テスト太郎",
-  password: "123456",
-  password_confirmation: "123456"
-)
-
-Report.create!(
-  title: "First Day",
-  body: "難しかった",
-  user: user
-)
-
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output

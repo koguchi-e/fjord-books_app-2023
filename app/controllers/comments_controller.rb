@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
   before_action :set_commentable
@@ -15,7 +17,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     if @comment.user == current_user
-      render "edit"
+      render 'edit'
     else
       redirect_to commentable_path
     end
@@ -28,7 +30,7 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @commentable, notice: t("controllers.common.notice_create", name: Comment.model_name.human) }
+        format.html { redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html do
@@ -46,15 +48,15 @@ class CommentsController < ApplicationController
       comment.update(comment_params)
       respond_to do |format|
         if params[:report_id]
-          format.html { redirect_to report_path(@commentable), notice: t("controllers.common.notice_update", name: Comment.model_name.human) }
+          format.html { redirect_to report_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
           format.json { head :no_content }
         elsif params[:book_id]
-          format.html { redirect_to book_path(@commentable), notice: t("controllers.common.notice_update", name: Comment.model_name.human) }
+          format.html { redirect_to book_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
           format.json { head :no_content }
         end
       end
     else
-      redirect_to report_path(@commentable), alert: "権限がありません。"
+      redirect_to report_path(@commentable), alert: '権限がありません。'
     end
   end
 
@@ -65,34 +67,35 @@ class CommentsController < ApplicationController
       comment.destroy
       respond_to do |format|
         if params[:report_id]
-          format.html { redirect_to report_path(@commentable), notice: t("controllers.common.notice_destroy", name: Comment.model_name.human) }
+          format.html { redirect_to report_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
           format.json { head :no_content }
         elsif params[:book_id]
-          format.html { redirect_to book_path(@commentable), notice: t("controllers.common.notice_destroy", name: Comment.model_name.human) }
+          format.html { redirect_to book_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
           format.json { head :no_content }
         end
       end
     else
-      redirect_to report_path(@commentable), alert: "権限がありません。"
+      redirect_to report_path(@commentable), alert: '権限がありません。'
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    def set_commentable
-      if params[:report_id]
-        @commentable = Report.find(params[:report_id])
-      elsif params[:book_id]
-        @commentable = Book.find(params[:book_id])
-      end
+  def set_commentable
+    if params[:report_id]
+      @commentable = Report.find(params[:report_id])
+    elsif params[:book_id]
+      @commentable = Book.find(params[:book_id])
     end
+  end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:body)
-    end
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end
