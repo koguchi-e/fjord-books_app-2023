@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
   before_action :set_commentable
 
-  # GET /comments or /comments.json
   def index
     @comments = Comment.all
   end
@@ -27,7 +26,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # POST /comments or /comments.json
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
@@ -35,7 +33,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
-        format.json { render :show, status: :created, location: @comment }
       else
         format.html do
           flash[:alert] = @comment.errors.full_messages.to_sentence
@@ -45,7 +42,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments/1 or /comments/1.json
   def update
     comment = @commentable.comments.find(params[:id])
     if comment.user == current_user
@@ -53,10 +49,8 @@ class CommentsController < ApplicationController
       respond_to do |format|
         if params[:report_id]
           format.html { redirect_to report_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
-          format.json { head :no_content }
         elsif params[:book_id]
           format.html { redirect_to book_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
-          format.json { head :no_content }
         end
       end
     else
@@ -64,7 +58,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1 or /comments/1.json
   def destroy
     comment = @commentable.comments.find(params[:id])
     if comment.user == current_user
@@ -72,10 +65,8 @@ class CommentsController < ApplicationController
       respond_to do |format|
         if params[:report_id]
           format.html { redirect_to report_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-          format.json { head :no_content }
         elsif params[:book_id]
           format.html { redirect_to book_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-          format.json { head :no_content }
         end
       end
     else
