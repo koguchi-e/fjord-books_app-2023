@@ -31,6 +31,8 @@ ja:
     form: "%{model} 入力フォーム"
     edit: "%{model}編集"
     show: "%{model}の詳細"
+  error:
+    count: "件のエラー"
   message:
     error: "この %{model} は保存できませんでした。"
   button:

@@ -1,7 +1,7 @@
 <%= form_with(model: report) do |form| %>
   <% if report.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+      <h2><%= pluralize(report.errors.count, t("error.count")) %>：<%= t("message.error", model: Report.model_name.human(count: 1)) %></h2>
 
       <ul>
         <% report.errors.each do |error| %>

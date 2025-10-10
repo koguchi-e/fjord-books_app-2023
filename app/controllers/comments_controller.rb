@@ -17,12 +17,10 @@ class CommentsController < ApplicationController
   def edit
     if @comment.user == current_user
       render 'edit'
-    else
-      if params[:report_id]
-        redirect_to reports_path
-      elsif params[:book_id]
-        redirect_to books_path
-      end
+    elsif params[:report_id]
+      redirect_to reports_path
+    elsif params[:book_id]
+      redirect_to books_path
     end
   end
 

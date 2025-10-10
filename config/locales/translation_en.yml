@@ -24,6 +24,8 @@ en:
     form: "%{model} Input form"
     edit: "Editing %{model}"
     show: "%{model} details"
+  error:
+    count: "error"
   message:
     error: "prohibited this %{model} from being saved:"
   button:
