@@ -19,7 +19,11 @@ class CommentsController < ApplicationController
     if @comment.user == current_user
       render 'edit'
     else
-      redirect_to commentable_path
+      if params[:report_id]
+        redirect_to reports_path
+      elsif params[:book_id]
+        redirect_to books_path
+      end
     end
   end
 
