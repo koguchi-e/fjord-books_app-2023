@@ -165,4 +165,17 @@ ApplicationRecord.transaction do # rubocop:disable Metrics/BlockLength
   end
 end
 
+user = User.create!(
+  email: "test@example.com",
+  password: "password",
+  password_confirmation: "password",
+  name: "テスト太郎"
+)
+
+Report.create!(
+  title: "First Day",
+  content: "難しかった",
+  user: user
+)
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
