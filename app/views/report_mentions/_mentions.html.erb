@@ -1,0 +1,10 @@
+<div class="comments-container">
+  <strong><%= t('pages.report_mention.mentioning') %><%= Report.model_name.human %></strong>
+  <% if @report.mentioning_reports.any? %>
+    <%= @report.mentioning_reports.each do |report| %>
+      <p><%= link_to report.title, report_path(report) %></p>
+    <% end %>
+  <% else %>
+    <p>この日報は言及されていません。</p>
+  <% end %>
+</div>

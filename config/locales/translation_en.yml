@@ -9,3 +9,8 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+    
+    pages:
+      report_mention:
+        mentioned: mentioned
+        mentioning: mentioning
