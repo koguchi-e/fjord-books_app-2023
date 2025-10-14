@@ -1,4 +1,4 @@
-class Mention < ApplicationRecord
-  belongs_to :mentinable, polymophic: true
-  belongs_to :mentionabled_user, class_name: 'User'
+class ReportMention < ApplicationRecord
+  belongs_to :source_report, class_name: 'Report'
+  belongs_to :target_report, class_name: 'Report'
 end
