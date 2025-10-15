@@ -3,6 +3,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
   before_action :set_commentable
+  before_action :authorize_current_user, only: %i[edit update destroy]
 
   def index
     @comments = Comment.all
@@ -15,13 +16,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    if @comment.user == current_user
-      render 'edit'
-    elsif params[:report_id]
-      redirect_to reports_path
-    elsif params[:book_id]
-      redirect_to books_path
-    end
+    render :edit
   end
 
   def create
@@ -29,44 +24,31 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) 
+      redirect_to redirect_to_path, notice: notice_message(:create)
     else
       flash[:alert] = @comment.errors.full_messages.to_sentence
-      redirect_to @commentable, status: :unprocessable_entity
+      redirect_to redirect_to_path, status: :unprocessable_entity
     end
   end
 
   def update
     comment = @commentable.comments.find(params[:id])
-    if comment.user == current_user
-      comment.update(comment_params)
-      if params[:report_id]
-        redirect_to report_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
-      elsif params[:book_id]
-        redirect_to book_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
-      end
+    if @comment.update(comment_params)
+      redirect_to redirect_to_path, notice: notice_message(:update)
     else
-      redirect_to report_path(@commentable), alert: '権限がありません。'
+      redirect_to redirect_to_path, status: :unprocessable_entity
     end
   end
 
   def destroy
     comment = @commentable.comments.find(params[:id])
-    if comment.user == current_user
-      comment.destroy
-      if params[:report_id]
-        redirect_to report_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
-      elsif params[:book_id]
-        redirect_to book_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
-      end
-    else
-      redirect_to report_path(@commentable), alert: '権限がありません。'
+    if @comment.destroy
+      redirect_to redirect_to_path, notice: notice_message(:destroy)
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_comment
     @comment = Comment.find(params[:id])
   end
@@ -79,8 +61,25 @@ class CommentsController < ApplicationController
     end
   end
 
-  # Only allow a list of trusted parameters through.
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def authorize_current_user
+    unless @comment.user == current_user
+      redirect_to redirect_to_path, alert: '権限がありません。'
+    end
+  end
+
+  def redirect_to_path
+    if params[:report_id]
+      report_path(@commentable)
+    else
+      book_path(@commentable)
+    end
+  end
+
+  def notice_message(action)
+    t("controllers.common.notice_#{action}", name: Comment.model_name.human)
   end
 end
