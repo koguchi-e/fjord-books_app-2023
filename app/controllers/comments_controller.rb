@@ -28,15 +28,11 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
-      else
-        format.html do
-          flash[:alert] = @comment.errors.full_messages.to_sentence
-          redirect_to @commentable, status: :unprocessable_entity
-        end
-      end
+    if @comment.save
+      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) 
+    else
+      flash[:alert] = @comment.errors.full_messages.to_sentence
+      redirect_to @commentable, status: :unprocessable_entity
     end
   end
 
@@ -44,12 +40,10 @@ class CommentsController < ApplicationController
     comment = @commentable.comments.find(params[:id])
     if comment.user == current_user
       comment.update(comment_params)
-      respond_to do |format|
-        if params[:report_id]
-          format.html { redirect_to report_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
-        elsif params[:book_id]
-          format.html { redirect_to book_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
-        end
+      if params[:report_id]
+        redirect_to report_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+      elsif params[:book_id]
+        redirect_to book_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
       end
     else
       redirect_to report_path(@commentable), alert: '権限がありません。'
@@ -60,12 +54,10 @@ class CommentsController < ApplicationController
     comment = @commentable.comments.find(params[:id])
     if comment.user == current_user
       comment.destroy
-      respond_to do |format|
-        if params[:report_id]
-          format.html { redirect_to report_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-        elsif params[:book_id]
-          format.html { redirect_to book_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-        end
+      if params[:report_id]
+        redirect_to report_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+      elsif params[:book_id]
+        redirect_to book_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
       end
     else
       redirect_to report_path(@commentable), alert: '権限がありません。'
