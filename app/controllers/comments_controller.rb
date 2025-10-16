@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    comment = @commentable.comments.find(params[:id])
+    @commentable.comments.find(params[:id])
     if @comment.update(comment_params)
       redirect_to redirect_to_path, notice: notice_message(:update)
     else
@@ -41,10 +41,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = @commentable.comments.find(params[:id])
-    if @comment.destroy
-      redirect_to redirect_to_path, notice: notice_message(:destroy)
-    end
+    @commentable.comments.find(params[:id])
+    @comment.destroy if redirect_to redirect_to_path, notice: notice_message(:destroy)
   end
 
   private
@@ -66,9 +64,9 @@ class CommentsController < ApplicationController
   end
 
   def authorize_current_user
-    unless @comment.user == current_user
-      redirect_to redirect_to_path, alert: '権限がありません。'
-    end
+    return if @comment.user == current_user
+
+    redirect_to redirect_to_path, alert: '権限がありません。'
   end
 
   def redirect_to_path

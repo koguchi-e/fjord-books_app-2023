@@ -76,28 +76,28 @@ User.order(:id).each.with_index(1) do |user, n|
 end
 
 user1 = User.create!(
-  email: "test1@example.com",
-  password: "123456",
-  password_confirmation: "123456",
-  name: "テスト太郎"
+  email: 'test1@example.com',
+  password: '123456',
+  password_confirmation: '123456',
+  name: 'テスト太郎'
 )
 
 user2 = User.create!(
-  email: "test2@example.com",
-  password: "123456",
-  password_confirmation: "123456",
-  name: "テスト花子"
+  email: 'test2@example.com',
+  password: '123456',
+  password_confirmation: '123456',
+  name: 'テスト花子'
 )
 
 Report.create!(
-  title: "First Day",
-  body: "難しかった",
+  title: 'First Day',
+  body: '難しかった',
   user: user1
 )
 
 Report.create!(
-  title: "1日目・晴れ",
-  body: "参考になりました：http://127.0.0.1:3000/reports/1",
+  title: '1日目・晴れ',
+  body: '参考になりました：http://127.0.0.1:3000/reports/1',
   user: user2
 )
 
