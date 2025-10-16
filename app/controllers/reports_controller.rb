@@ -60,7 +60,7 @@ class ReportsController < ApplicationController
     mentioning_reports = []
 
     Report.where.not(id: this_report.id).find_each do |other_report|
-      mentioning_reports << other_report if this_report.content.include?("http://127.0.0.1:3000/reports/#{other_report.id}")
+      mentioning_reports << other_report if this_report.content.match?(%r{http://127\.0\.0\.1:3000/reports/#{other_report.id}(?!\d)})
       @mentioning_reports = mentioning_reports
     end
   end
@@ -70,7 +70,7 @@ class ReportsController < ApplicationController
     this_report = Report.find(params[:id])
     mentioned_reports = []
     Report.where.not(id: this_report.id).find_each do |report|
-      mentioned_reports << report if report.content.include?("http://127.0.0.1:3000/reports/#{this_report.id}")
+      mentioned_reports << report if report.content.match?(%r{http://127\.0\.0\.1:3000/reports/#{this_report.id}(?!\d)})
     end
     @mentioned_reports = mentioned_reports
   end
