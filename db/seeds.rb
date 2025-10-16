@@ -110,13 +110,28 @@ user2 = User.create!(
 
 report1 = Report.create!(
   title: 'First Day',
-  content: '難しかった',
+  content: '難しかった
+  http://127.0.0.1:3000/reports/3
+  http://127.0.0.1:3000/reports/3
+  http://127.0.0.1:3000/reports/4',
   user: user1
 )
 
 report2 = Report.create!(
   title: '1日目・晴れ',
   content: '参考になりました：http://127.0.0.1:3000/reports/1',
+  user: user2
+)
+
+report3 = Report.create!(
+  title: '今日もいい天気！',
+  content: 'こんにちは',
+  user: user1
+)
+
+report4 = Report.create!(
+  title: '2日目：曇り',
+  content: 'おはようございます',
   user: user2
 )
 

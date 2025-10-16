@@ -5,7 +5,7 @@
   <% if @mentioning_reports.any? %>
     <ul>
       <% @mentioning_reports.each do |report| %>
-        <li><%= link_to report.title, report_path(report) %></li>
+        <li><%= link_to report.user.name, user_path(report.user) %>：<%= link_to report.title, report_path(report) %></li>
       <% end %>
     </ul>
   <% else %>
@@ -13,15 +13,13 @@
   <% end %>
 </p>
 
-<hr>
-
 <p>
   <strong><%= t('pages.report_mention.mentioned') %><%= Report.model_name.human %></strong>
   <!-- # 自分が言及される側・その日報に言及している日報たち（言及元）・ned -->
   <% if @mentioned_reports.any? %>
     <ul>
       <% @mentioned_reports.each do |report| %>
-        <li><%= link_to report.title, report_path(report) %></li>
+        <li><%= link_to report.user.name, user_path(report.user) %>：<%= link_to report.title, report_path(report) %></li>
       <% end %>
     </ul>
   <% else %>
