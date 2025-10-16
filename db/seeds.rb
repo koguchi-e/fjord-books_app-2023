@@ -89,16 +89,34 @@ user2 = User.create!(
   name: 'テスト花子'
 )
 
-Report.create!(
+report1 = Report.create!(
   title: 'First Day',
   body: '難しかった',
   user: user1
 )
 
-Report.create!(
+report2 = Report.create!(
   title: '1日目・晴れ',
   body: '参考になりました：http://127.0.0.1:3000/reports/1',
   user: user2
+)
+
+Comment.create!(
+  body: 'よく頑張りましたね！',
+  user: user2,
+  commentable: report1
+)
+
+Comment.create!(
+  body: 'ありがとうございます！',
+  user: user1,
+  commentable: report1
+)
+
+Comment.create!(
+  body: 'おはよう',
+  user: user1,
+  commentable: report2
 )
 
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
