@@ -123,13 +123,13 @@ report2 = Report.create!(
   user: user2
 )
 
-report3 = Report.create!(
+Report.create!(
   title: '今日もいい天気！',
   content: 'こんにちは',
   user: user1
 )
 
-report4 = Report.create!(
+Report.create!(
   title: '2日目：曇り',
   content: 'おはようございます',
   user: user2
