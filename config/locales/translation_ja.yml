@@ -3,7 +3,12 @@ ja:
     models:
       book: 本
       user: ユーザ
-
+      report:
+        one: 日報
+        other: 日報
+      comment:
+        one: コメント
+        other: コメント
     attributes:
       book:
         author: 著者
@@ -16,3 +21,24 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      report:
+        title: タイトル
+        body: 本文
+      comment:
+        body: 本文
+  page_title:
+    new: "%{model} 新規作成"
+    form: "%{model} 入力フォーム"
+    edit: "%{model}編集"
+    show: "%{model}の詳細"
+  error:
+    count: "件のエラー"
+  message:
+    error: "この %{model} は保存できませんでした。"
+  button:
+    new: "%{model}新規作成"
+    index: "%{model}の一覧へ"
+    edit: "この%{model}を編集"
+    back: "%{model}に戻る"
+    show: "この%{model}の詳細"
+    destroy: "この%{model}を削除"

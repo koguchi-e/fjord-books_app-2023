@@ -1,0 +1,19 @@
+<h1><%= t("page_title.show", model: Report.model_name.human(count: 1)) %></h1>
+
+<div class="show-item">
+  <%= render @report %>
+</div>
+
+<%= render "comments/comment", commentable: @report %>
+
+<%= render "comments/form",  commentable: @report %>
+
+<nav class="page-nav">
+  <% if @report.user.id == current_user.id %>
+    <%= link_to t("button.edit", model: Report.model_name.human(count: 1)), edit_report_path(@report) %> |
+  <% end %>
+  <%= link_to t("button.index", model: Report.model_name.human(count: 2)), reports_path %>
+  <% if @report.user.id == current_user.id %>
+    <%= button_to t("button.destroy", model: Report.model_name.human(count: 1)), @report, method: :delete %>
+  <% end %>
+</nav>

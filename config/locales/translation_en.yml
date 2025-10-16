@@ -2,10 +2,36 @@ en:
   activerecord:
     models:
       book: Book
-
+      report:
+        one: Report
+        other: Reports
+      comment:
+        one: Comment
+        other: Comments
     attributes:
       book:
         author: Author
         memo: Memo
         picture: Picture
         title: Title
+      report:
+        title: Title
+        body: Body
+      comment:
+        body: Body
+  page_title:
+    new: "New %{model}"
+    form: "%{model} Input form"
+    edit: "Editing %{model}"
+    show: "%{model} details"
+  error:
+    count: "error"
+  message:
+    error: "prohibited this %{model} from being saved:"
+  button:
+    new: "New %{model}"
+    index: "%{model}"
+    edit: "Edit this %{model}"
+    back: "Back to %{model}"
+    show: "Show this %{model}"
+    destroy: "Destroy this %{model}"

@@ -1,0 +1,15 @@
+<h1><%= Report.model_name.human(count: 2) %></h1>
+<div id="reports" class="index-items">
+  <% @reports.each do |report| %>
+    <div class="index-item">
+      <%= render report %>
+      <p>
+        <%= link_to t("button.show", model: Report.model_name.human(count: 1)), report %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<nav class="page-nav">
+  <%= link_to t("button.new", model: Report.model_name.human(count: 1)), new_report_path %>
+</nav>
