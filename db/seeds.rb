@@ -118,13 +118,13 @@ report1 = Report.create!(
 )
 
 report2 = Report.create!(
-  title: '1日目・晴れ',
+  title: 'レポート2',
   content: '参考になりました：http://127.0.0.1:3000/reports/1',
   user: user2
 )
 
 Report.create!(
-  title: '今日もいい天気！',
+  title: '1日目・晴れ',
   content: 'こんにちは',
   user: user1
 )
