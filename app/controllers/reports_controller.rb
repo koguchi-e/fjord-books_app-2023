@@ -2,6 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[edit update destroy]
+  require 'rails_autolink'
 
   def index
     @reports = Report.includes(:user).order(id: :desc).page(params[:page])
