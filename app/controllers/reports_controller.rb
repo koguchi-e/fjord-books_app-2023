@@ -9,7 +9,8 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    create_mention_list
+    create_mentioning_list
+    create_mentioned_list
   end
 
   # GET /reports/new
@@ -53,14 +54,28 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content)
   end
 
-  def create_mention_list
+  # 自分が言及する側・その日報が言及している日報たち（言及先）・ing
+  def create_mentioning_list
     this_report = Report.find(params[:id])
     mentioning_reports = []
+
+    Report.where.not(id: this_report.id).find_each do |other_report|
+      if this_report.content.include?("http://127.0.0.1:3000/reports/#{other_report.id}")
+        mentioning_reports << other_report
+      end
+      @mentioning_reports = mentioning_reports
+    end
+  end
+
+  # 自分が言及される側・その日報に言及している日報たち（言及元）・ned
+  def create_mentioned_list
+    this_report = Report.find(params[:id])
+    mentioned_reports = []
     Report.where.not(id: this_report.id).find_each do |report|
       if report.content && report.content.include?("http://127.0.0.1:3000/reports/#{this_report.id}")
-        mentioning_reports << report
+        mentioned_reports << report
       end
     end
-    @mentioning_reports = mentioning_reports
+    @mentioned_reports = mentioned_reports
   end
 end

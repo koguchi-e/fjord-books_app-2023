@@ -94,30 +94,48 @@ Report.destroy_all
 # dependent: :destroy で全件削除されているはずだが念のため
 Comment.destroy_all
 
-user = User.create!(
-  email: "test1@example.com",
-  password: "123456",
-  password_confirmation: "123456",
-  name: "テスト太郎"
+user1 = User.create!(
+  email: 'test1@example.com',
+  password: '123456',
+  password_confirmation: '123456',
+  name: 'テスト太郎'
 )
 
 user2 = User.create!(
-  email: "test2@example.com",
-  password: "123456",
-  password_confirmation: "123456",
-  name: "テスト花子"
+  email: 'test2@example.com',
+  password: '123456',
+  password_confirmation: '123456',
+  name: 'テスト花子'
 )
 
-Report.create!(
-  title: "First Day",
-  content: "難しかった",
-  user: user
+report1 = Report.create!(
+  title: 'First Day',
+  content: '難しかった',
+  user: user1
 )
 
-Report.create!(
-  title: "1日目・晴れ",
-  content: "参考になりました：http://127.0.0.1:3000/reports/1",
+report2 = Report.create!(
+  title: '1日目・晴れ',
+  content: '参考になりました：http://127.0.0.1:3000/reports/1',
   user: user2
+)
+
+Comment.create!(
+  content: 'よく頑張りましたね！',
+  user: user2,
+  commentable: report1
+)
+
+Comment.create!(
+  content: 'ありがとうございます！',
+  user: user1,
+  commentable: report1
+)
+
+Comment.create!(
+  content: 'おはよう',
+  user: user1,
+  commentable: report2
 )
 
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output

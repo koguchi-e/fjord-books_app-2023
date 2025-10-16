@@ -1,10 +1,31 @@
-<div class="comments-container">
+<hr>
+<p>
   <strong><%= t('pages.report_mention.mentioning') %><%= Report.model_name.human %></strong>
+  <!-- # 自分が言及する側・その日報が言及している日報たち（言及先）・ing -->
   <% if @mentioning_reports.any? %>
-    <% @mentioning_reports.each do |report| %>
-      <p><%= link_to report.title, report_path(report) %></p>
-    <% end %>
+    <ul>
+      <% @mentioning_reports.each do |report| %>
+        <li><%= link_to report.title, report_path(report) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>この日報は言及していません。</p>
+  <% end %>
+</p>
+
+<hr>
+
+<p>
+  <strong><%= t('pages.report_mention.mentioned') %><%= Report.model_name.human %></strong>
+  <!-- # 自分が言及される側・その日報に言及している日報たち（言及元）・ned -->
+  <% if @mentioned_reports.any? %>
+    <ul>
+      <% @mentioned_reports.each do |report| %>
+        <li><%= link_to report.title, report_path(report) %></li>
+      <% end %>
+    </ul>
   <% else %>
     <p>この日報は言及されていません。</p>
   <% end %>
-</div>
+</p>
+<hr>
