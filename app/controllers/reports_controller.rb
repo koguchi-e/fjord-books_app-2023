@@ -9,8 +9,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    create_mentioning_list
-    create_mentioned_list
+    set_mention_list
   end
 
   # GET /reports/new
@@ -54,22 +53,13 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content)
   end
 
-  def create_mentioning_list
+  def set_mention_list
     this_report = Report.find(params[:id])
-    mentioning_reports = []
 
-    Report.where.not(id: this_report.id).find_each do |other_report|
-      mentioning_reports << other_report if this_report.content.match?(%r{http://127\.0\.0\.1:3000/reports/#{other_report.id}(?!\d)})
-      @mentioning_reports = mentioning_reports
-    end
-  end
+    menthion_ids = this_report.content.scan(%r{http://127\.0\.0\.1:3000/reports/(\d+)}).flatten.map(&:to_i)
+    @mentioning_reports = Report.where(id: menthion_ids)
 
-  def create_mentioned_list
-    this_report = Report.find(params[:id])
-    mentioned_reports = []
-    Report.where.not(id: this_report.id).find_each do |report|
-      mentioned_reports << report if report.content.match?(%r{http://127\.0\.0\.1:3000/reports/#{this_report.id}(?!\d)})
-    end
-    @mentioned_reports = mentioned_reports
+    pattern = "%http://127\.0\.0\.1:3000/reports/#{this_report.id}"
+    @mentioned_reports = Report.where("content LIKE ?", pattern).where.not(id: this_report.id)
   end
 end
