@@ -9,7 +9,17 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    set_mention_list
+    @mentioned_reports = @report.mentioned_reports
+    @mentioning_reports = @report.mentioning_reports
+
+    @mentioned_reports.each do |r|
+      puts "★言及された: #{r.id}, #{r.title}"
+    end
+
+    @mentioning_reports.each do |r|
+      puts "★言及してる: #{r.id}, #{r.title}"
+    end
+
   end
 
   # GET /reports/new
@@ -23,6 +33,7 @@ class ReportsController < ApplicationController
     @report = current_user.reports.new(report_params)
 
     if @report.save
+      create_mention_list(@report)
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -53,13 +64,16 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content)
   end
 
-  def set_mention_list
-    this_report = Report.find(params[:id])
-
-    menthion_ids = this_report.content.scan(%r{http://127\.0\.0\.1:3000/reports/(\d+)}).flatten.map(&:to_i)
-    @mentioning_reports = Report.where(id: menthion_ids)
-
-    pattern = "%http://127\.0\.0\.1:3000/reports/#{this_report.id}"
-    @mentioned_reports = Report.where("content LIKE ?", pattern).where.not(id: this_report.id)
+  def create_mention_list(report)
+    report.mention_from_me.destroy_all
+    mentioned_ids = report.content.scan(%r{reports/(\d+)}).flatten.map(&:to_i)
+    mentioned_ids.uniq.each do |target_id|
+      next if target_id == report.id
+      ReportMention.create!(source_report_id: report.id, target_report_id: target_id)
+      ReportMention.create!(
+        source_report_id: report.id,  # 自分が言及する側
+        target_report_id: target_id   # 本文で書いた相手
+      )
+    end
   end
 end

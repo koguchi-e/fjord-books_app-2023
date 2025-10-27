@@ -9,6 +9,7 @@ class Report < ApplicationRecord
             foreign_key: :source_report_id,
             dependent: :destroy,
             inverse_of: :source_report
+
   has_many  :mentioned_reports,
             through: :mention_from_me,
             source: :target_report
@@ -18,6 +19,7 @@ class Report < ApplicationRecord
             foreign_key: :target_report_id,
             dependent: :destroy,
             inverse_of: :target_report
+
   has_many  :mentioning_reports,
             through: :mention_to_me,
             source: :source_report
