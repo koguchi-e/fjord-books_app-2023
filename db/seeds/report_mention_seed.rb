@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 user1 = User.create!(
   email: 'test1@example.com',
   password: '123456',
