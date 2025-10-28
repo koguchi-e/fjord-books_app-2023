@@ -1,9 +1,9 @@
 <hr>
 <p>
-  <strong><%= t('pages.report_mention.mentioned') %><%= Report.model_name.human %></strong>
-  <% if @mentioned_reports.any? %>
+  <strong><%= t('pages.report_mention.mentioning') %><%= Report.model_name.human %></strong>
+  <% if @mentioning_reports.any? %>
     <ul>
-      <% @mentioned_reports.each do |report| %>
+      <% @mentioning_reports.each do |report| %>
         <li><%= link_to report.title, report_path(report) %></li>
       <% end %>
     </ul>
@@ -13,10 +13,10 @@
 </p>
 
 <p>
-  <strong><%= t('pages.report_mention.mentioning') %><%= Report.model_name.human %></strong>
-  <% if @mentioning_reports.any? %>
+  <strong><%= t('pages.report_mention.mentioned') %><%= Report.model_name.human %></strong>
+  <% if @mentioned_reports.any? %>
     <ul>
-      <% @mentioning_reports.each do |report| %>
+      <% @mentioned_reports.each do |report| %>
         <li><%= link_to report.title, report_path(report) %></li>
       <% end %>
     </ul>
@@ -25,4 +25,3 @@
   <% end %>
 </p>
 <hr>
-

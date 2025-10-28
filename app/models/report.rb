@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
+  after_commit :create_mention_list, on: [:create, :update]
+
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
 
@@ -10,7 +12,7 @@ class Report < ApplicationRecord
             dependent: :destroy,
             inverse_of: :source_report
 
-  has_many  :mentioned_reports,
+  has_many  :mentioning_reports,
             through: :mention_from_me,
             source: :target_report
 
@@ -20,7 +22,7 @@ class Report < ApplicationRecord
             dependent: :destroy,
             inverse_of: :target_report
 
-  has_many  :mentioning_reports,
+  has_many  :mentioned_reports,
             through: :mention_to_me,
             source: :source_report
 
@@ -33,5 +35,16 @@ class Report < ApplicationRecord
 
   def created_on
     created_at.to_date
+  end
+
+  def create_mention_list
+    mention_from_me.destroy_all
+    mentioned_ids = content.scan(%r{reports/(\d+)}).flatten.map(&:to_i)
+    return if mentioned_ids.empty?
+    mentioned_ids.uniq.each do |target_id|
+      next if target_id == id
+      next unless Report.exists?(target_id)
+      ReportMention.create!(source_report_id: id, target_report_id: target_id)
+    end
   end
 end
