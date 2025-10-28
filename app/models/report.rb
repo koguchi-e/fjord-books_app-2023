@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
-  after_commit :create_mention_list, on: [:create, :update]
+  after_commit :create_mention_list, on: %i[create update]
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
@@ -41,9 +41,11 @@ class Report < ApplicationRecord
     mention_from_me.delete_all
     mentioned_ids = content.scan(%r{reports/(\d+)}).flatten.map(&:to_i)
     return if mentioned_ids.empty?
+
     mentioned_ids.uniq.each do |target_id|
       next if target_id == id
       next unless Report.exists?(target_id)
+
       ReportMention.create!(source_report_id: id, target_report_id: target_id)
     end
   end
