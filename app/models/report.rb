@@ -38,7 +38,7 @@ class Report < ApplicationRecord
   end
 
   def create_mention_list
-    mention_from_me.destroy_all
+    mention_from_me.delete_all
     mentioned_ids = content.scan(%r{reports/(\d+)}).flatten.map(&:to_i)
     return if mentioned_ids.empty?
     mentioned_ids.uniq.each do |target_id|
