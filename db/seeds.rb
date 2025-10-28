@@ -89,63 +89,80 @@ User.order(:id).each.with_index(1) do |user, n|
   user.avatar.attach(io: File.open(image_path), filename: 'avatar.png')
 end
 
-user1 = User.create!(
-  email: 'test1@example.com',
-  password: '123456',
-  password_confirmation: '123456',
-  name: 'テスト太郎'
-)
+Report.destroy_all
 
-user2 = User.create!(
-  email: 'test2@example.com',
-  password: '123456',
-  password_confirmation: '123456',
-  name: 'テスト花子'
-)
+users = User.all.to_a
+times = Array.new(55) { Faker::Time.between(from: 5.days.ago, to: 1.day.ago) }.sort
+titles = <<~TEXT.lines(chomp: true)
+  初日報です
+  CSS初級
+  gitに苦戦
+  lsコマンドむずすぎへん？
+  自作サービスに着手
+  ペアプロ申し込んでみた
+  やっとRails
+  Sinatraの勉強
+  Markdownって便利
+  RSpec始めました
+TEXT
+contents = <<~TEXT.lines(chomp: true)
+  自分が聴いだのは近頃途中でおもにないうでし。
+  すなわち言葉か不明か反抗にしですて、事実末見識にきまってならなかっためにご談判の十月で知れうです。
+  何だかひょろひょろは別に否によっているなば、私にも当時いっぱいなどあなたのお創設も若い得下さろるた。
+  それも同年もっとその教育家というのの後がつけよただ。
+  自己をところが岡田さんからしかしそうあるですのうでた。
+  ほかでも単にして根ざしましないですますて。
+  何しろはなはだなっば話もこうないます事ある。
+  大分幾分お話を解るありやいるです事に黙っないです。
+  しっかりの今度になってこの時でもっとも向いなかっなくと上るた事だ。
+  深いませましがあまりご本場見るましものましなけれございます。
+TEXT
+Report.transaction do
+  55.times do |n|
+    time = times[n]
+    user = users.sample
+    title = titles.sample
+    content_length = [*1..3].sample
+    content = contents.sample(content_length).join("\n")
+    user.reports.create!(title:, content:, created_at: time, updated_at: time)
+  end
+end
 
-report1 = Report.create!(
-  title: '1日目・晴れ',
-  content: 'こんにちは',
-  user: user1
-)
+# dependent: :destroy で全件削除されているはずだが念のため
+Comment.destroy_all
 
-report2 = Report.create!(
-  title: '2日目：曇り',
-  content: 'おはようございます',
-  user: user2
-)
+ApplicationRecord.transaction do # rubocop:disable Metrics/BlockLength
+  contents = <<~TEXT.lines(chomp: true)
+    これは面白そう。
+    すごく実用的！
+    画期的な内容ですね！
+    私も読んでみます。
+    ちょっと難しそうな本。
+    とてもためになりました。
+    人生について考えられました。
+    これを読めばあなたも億万長者！！
+    この作者の本はどれも面白い。
+    わかりやすかったです。
+  TEXT
+  Book.all.each do |book|
+    add_comments_to(book, contents)
+  end
 
-report3 = Report.create!(
-  title: '言及テスト1',
-  content: "言及しているものが複数あり・重複している場合：
-  http://127.0.0.1:3000/reports/#{report1.id}
-  http://127.0.0.1:3000/reports/#{report1.id}
-  http://127.0.0.1:3000/reports/#{report2.id}",
-  user: user1
-)
-
-report4 = Report.create!(
-  title: '言及テスト2',
-  content: "言及テスト1を言及している：http://127.0.0.1:3000/reports/#{report3.id}",
-  user: user2
-)
-
-Comment.create!(
-  content: 'よく頑張りましたね！',
-  user: user2,
-  commentable: report3
-)
-
-Comment.create!(
-  content: 'ありがとうございます！',
-  user: user1,
-  commentable: report3
-)
-
-Comment.create!(
-  content: 'おはよう',
-  user: user1,
-  commentable: report4
-)
+  contents = <<~TEXT.lines(chomp: true)
+    なるほど、大変そうですね。
+    わかります！！
+    あるあるですね〜。
+    一緒に頑張りましょう！
+    へ〜、そうなんですね。
+    それは意外ですw
+    私も同じです〜。
+    たしかに〜。
+    勉強になります！
+    ですよね〜。同感です。
+  TEXT
+  Report.all.each do |report|
+    add_comments_to(report, contents)
+  end
+end
 
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
