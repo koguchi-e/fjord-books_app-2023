@@ -9,8 +9,6 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    @mentioned_reports = @report.mentioned_reports
-    @mentioning_reports = @report.mentioning_reports
   end
 
   # GET /reports/new
