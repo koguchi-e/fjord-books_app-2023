@@ -1,5 +1,5 @@
 <hr>
-<strong><%= t('pages.report_mention.mentioning') %><%= Report.model_name.human %></strong>
+<strong><%= t('.mentioning') %></strong>
 <% if (reports = @report.mentioning_reports.order(:id)).any? %>
   <ul>
     <% @report.mentioning_reports.each do |report| %>
@@ -7,10 +7,10 @@
     <% end %>
   </ul>
 <% else %>
-  <p>この日報は言及していません。</p>
+  <p><%= t('.not_mentioning') %></p>
 <% end %>
 
-<strong><%= t('pages.report_mention.mentioned') %><%= Report.model_name.human %></strong>
+<strong><%= t('.mentioned') %></strong>
 <% if (reports = @report.mentioned_reports.order(:id)).any? %>
   <ul>
     <% @report.mentioned_reports.each do |report| %>
@@ -18,6 +18,6 @@
     <% end %>
   </ul>
 <% else %>
-  <p>この日報は言及されていません。</p>
+  <p><%= t('.not_mentioned') %></p>
 <% end %>
 <hr>

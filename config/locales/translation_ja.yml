@@ -23,8 +23,10 @@ ja:
         content: 内容
         user: 作成者
         created_on: 作成日
-    
-  pages:
-    report_mention:
-      mentioned: 言及された
-      mentioning: 言及している
+  report_mentions:
+    mentions:
+      mentioning: 言及している日報
+      mentioned: 言及された日報
+      not_mentioning: この日報は言及していません。
+      not_mentioned: この日報は言及されていません。
+
