@@ -40,7 +40,6 @@ class Report < ApplicationRecord
   def create_mention_list
     mention_from_me.delete_all
     mentioned_ids = content.scan(%r{http://127.0.0.1:3000/reports/(\d+)}).flatten.map(&:to_i)
-    return if mentioned_ids.empty?
 
     mentioned_ids.uniq.each do |target_id|
       next if target_id == id
