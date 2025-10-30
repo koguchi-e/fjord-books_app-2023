@@ -1,27 +1,23 @@
 <hr>
-<p>
-  <strong><%= t('pages.report_mention.mentioning') %><%= Report.model_name.human %></strong>
-  <% if (reports = @report.mentioning_reports.order(:id)).any? %>
-    <ul>
-      <% @report.mentioning_reports.each do |report| %>
-        <li><%= link_to report.title, report_path(report) %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>この日報は言及していません。</p>
-  <% end %>
-</p>
+<strong><%= t('pages.report_mention.mentioning') %><%= Report.model_name.human %></strong>
+<% if (reports = @report.mentioning_reports.order(:id)).any? %>
+  <ul>
+    <% @report.mentioning_reports.each do |report| %>
+      <li><%= link_to report.title, report_path(report) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>この日報は言及していません。</p>
+<% end %>
 
-<p>
-  <strong><%= t('pages.report_mention.mentioned') %><%= Report.model_name.human %></strong>
-  <% if (reports = @report.mentioned_reports.order(:id)).any? %>
-    <ul>
-      <% @report.mentioned_reports.each do |report| %>
-        <li><%= link_to report.title, report_path(report) %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>この日報は言及されていません。</p>
-  <% end %>
-</p>
+<strong><%= t('pages.report_mention.mentioned') %><%= Report.model_name.human %></strong>
+<% if (reports = @report.mentioned_reports.order(:id)).any? %>
+  <ul>
+    <% @report.mentioned_reports.each do |report| %>
+      <li><%= link_to report.title, report_path(report) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>この日報は言及されていません。</p>
+<% end %>
 <hr>
