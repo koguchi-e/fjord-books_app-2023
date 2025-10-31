@@ -42,10 +42,8 @@ class Report < ApplicationRecord
     mentioned_ids = content.scan(%r{http://127.0.0.1:3000/reports/(\d+)}).flatten.map(&:to_i)
 
     mentioned_ids.uniq.each do |target_id|
-      mentioning_report = Report.where.not(id: id).find_by(id: target_id)
-      if mentioning_report
-        mentioning_reports << mentioning_report
-      end
+      mentioning_report = Report.where.not(id:).find_by(id: target_id)
+      mentioning_reports << mentioning_report if mentioning_report
     end
   end
 end
