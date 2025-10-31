@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
-  after_commit :create_mention_list, on: %i[create update]
+  after_save :create_mention_list
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
