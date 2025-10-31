@@ -42,10 +42,10 @@ class Report < ApplicationRecord
     mentioned_ids = content.scan(%r{http://127.0.0.1:3000/reports/(\d+)}).flatten.map(&:to_i)
 
     mentioned_ids.uniq.each do |target_id|
-      next if target_id == id
-      next unless Report.exists?(target_id)
-
-      ReportMention.create!(source_report_id: id, target_report_id: target_id)
+      mentioning_report = Report.where.not(id: id).find_by(id: target_id)
+      if mentioning_report
+        mentioning_reports << mentioning_report
+      end
     end
   end
 end
