@@ -9,3 +9,9 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+  report_mentions:
+    mentions:
+      mentioning: Mentioning Report
+      mentioned: Mentioned Report
+      not_mentioning: This report don't have any mentions.
+      not_mentioned: This report is not mentioned.

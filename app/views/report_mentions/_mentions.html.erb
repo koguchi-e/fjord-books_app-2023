@@ -1,0 +1,23 @@
+<hr>
+<strong><%= t('.mentioning') %></strong>
+<% if (reports = @report.mentioning_reports.order(:id)).any? %>
+  <ul>
+    <% @report.mentioning_reports.each do |report| %>
+      <li><%= link_to report.title, report_path(report) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p><%= t('.not_mentioning') %></p>
+<% end %>
+
+<strong><%= t('.mentioned') %></strong>
+<% if (reports = @report.mentioned_reports.order(:id)).any? %>
+  <ul>
+    <% @report.mentioned_reports.each do |report| %>
+      <li><%= link_to report.title, report_path(report) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p><%= t('.not_mentioned') %></p>
+<% end %>
+<hr>
