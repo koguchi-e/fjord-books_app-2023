@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
-  after_save :create_mention_list
+  after_save :recreate_mention_list
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
@@ -37,7 +37,7 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
-  def create_mention_list
+  def recreate_mention_list
     mention_from_me.delete_all
     mentioned_ids = content.scan(%r{http://127.0.0.1:3000/reports/(\d+)}).flatten.map(&:to_i)
 
