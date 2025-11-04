@@ -12,6 +12,6 @@
 
 report:
   title: '１日目'
-  content: 'テストを書くのは難しい'
+  content: 'http://localhost:3000/reports/1'
   created_at: <%= Time.current %>
   user: user

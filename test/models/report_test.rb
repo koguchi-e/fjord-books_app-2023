@@ -18,4 +18,11 @@ class ReportTest < ActiveSupport::TestCase
     assert_equal report.created_at.to_date, report.created_on
     assert_instance_of Date, report.created_on
   end
+
+  test 'レポートに含まれるURLからmentioned_reportsが正しく作成されるか' do
+    report = reports(:report)
+    report.mentioned_reports.each do |m|
+      assert_equal 1, m.id
+    end
+  end
 end
