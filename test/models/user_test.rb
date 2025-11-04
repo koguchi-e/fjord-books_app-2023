@@ -8,7 +8,7 @@ class UserTest < ActiveSupport::TestCase
   # end
   
   test 'name_or_emailが名前を返すか' do
-    user = User.new(name: '山田太郎', email: 'yamada@example.com')
+    user = users(:user)
     assert_equal '山田太郎', user.name_or_email
   end
   test 'name_or_emailがもし名前が空欄ならメールアドレスを返すか' do

@@ -10,6 +10,6 @@
 # two: {}
 # # column: value
 
-alice:
-  email: 'alice@example.com'
-  name: 'Alice'
+user:
+  email: 'yamada@example.com'
+  name: '山田太郎'

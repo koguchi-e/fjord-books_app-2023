@@ -9,3 +9,9 @@
 #   user: two
 #   title: MyString
 #   content: MyText
+
+report:
+  title: '１日目'
+  content: 'テストを書くのは難しい'
+  created_at: <%= Time.current %>
+  user: user
