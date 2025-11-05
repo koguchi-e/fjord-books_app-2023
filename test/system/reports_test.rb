@@ -9,19 +9,30 @@ class ReportsTest < ApplicationSystemTestCase
 
   fixtures :users
 
-  test 'ログインして日報の一覧にアクセスする' do
+  test 'ログインして新規に日報を作成する' do
     visit root_url
     fill_in 'Eメール', with: 'yamada@example.com'
     fill_in 'パスワード', with:'password'
+
     click_button 'ログイン'
     assert_text 'ログインしました。'
 
     visit books_url
     assert_selector 'h1', text: '本の一覧'
     click_on '日報'
+
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
-    sleep 3
+
+    click_on '日報の新規作成'
+    fill_in 'タイトル', with: '2日目'
+    fill_in '内容', with: 'テストコードは楽しい、設計が苦手だと気づく'
+    click_button '登録する'
+    assert_text '日報が作成されました。'
+
+    visit report_url(Report.last)
+    assert_text '2日目'
+    assert_text 'テストコードは楽しい、設計が苦手だと気づく'
   end
 
   # test 'visiting the index' do
