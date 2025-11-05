@@ -35,15 +35,15 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: '吾輩は猫である2'
     fill_in 'メモ', with: '続編'
     fill_in '著者', with: '夏目漱石2世'
-    attach_file 'book[picture]', Rails.root.join('test/fixtures/files/girl.png')
+    attach_file 'book[picture]', Rails.root.join('test/fixtures/files/tiger.png')
     click_button '更新する'
 
     assert_text '本が更新されました。'
     visit book_url(Book.last)
-    assert_text '吾輩は猫である2'
-    assert_text '続編'
-    assert_text '夏目漱石2世'
-    assert_selector "img[src*='girl.png']"
+    assert_text '山月記'
+    assert_text '隴西ろうさいの李徴りちょうは博学才穎さいえい、'
+    assert_text '中島敦'
+    assert_selector "img[src*='tiger.png']"
   end
 
   test '本の削除' do
