@@ -4,7 +4,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test 'name_or_emailが名前を返すか' do
-    user = users(:user)
+    user = FactoryBot.create(:user)
     assert_equal 'テストユーザー', user.name_or_email
   end
 
