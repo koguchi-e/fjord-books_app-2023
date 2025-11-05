@@ -3,10 +3,6 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
   test 'ユーザーが一致する時、editable?がtrueを返すか' do
     user = users(:user)
     report = reports(:report)
