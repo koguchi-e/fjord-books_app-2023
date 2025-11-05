@@ -1,9 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   title: MyString
-#   memo: MyText
-
-# two:
-#   title: MyString
-#   memo: MyText
+book:
+  title: 山月記
+  memo: 隴西ろうさいの李徴りちょうは博学才穎さいえい、
+  author: 中島敦

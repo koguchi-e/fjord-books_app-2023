@@ -3,8 +3,6 @@
 require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
-  fixtures :users
-
   def login_as_testuser
     visit root_url
     fill_in 'Eメール', with: 'test_user@example.com'
