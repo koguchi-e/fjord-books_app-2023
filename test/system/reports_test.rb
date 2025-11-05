@@ -12,7 +12,7 @@ class ReportsTest < ApplicationSystemTestCase
   def login_as_testuser
     visit root_url
     fill_in 'Eメール', with: 'test_user@example.com'
-    fill_in 'パスワード', with:'password'
+    fill_in 'パスワード', with: 'password'
 
     click_button 'ログイン'
     assert_text 'ログインしました。'
