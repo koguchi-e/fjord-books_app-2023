@@ -19,35 +19,39 @@ class ReportsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: '日報の一覧'
   end
 
-  test 'ログインして新規に日報を作成する' do
-    login_as_testuser
-
-    click_on '日報の新規作成'
+  def fill_in_report_information
     fill_in 'タイトル', with: '2日目'
     fill_in '内容', with: 'テストコードは楽しい、設計が苦手だと気づく'
-    click_button '登録する'
-    assert_text '日報が作成されました。'
+  end
 
-    visit report_url(Report.last)
+  def check_report_information
     assert_text '2日目'
     assert_text 'テストコードは楽しい、設計が苦手だと気づく'
   end
 
+  test 'ログインして新規に日報を作成する' do
+    login_as_testuser
+    click_on '日報の新規作成'
+    fill_in_report_information
+    click_button '登録する'
+    assert_text '日報が作成されました。'
+
+    visit report_url(Report.last)
+    check_report_information
+  end
+
   test '日報の編集' do
     login_as_testuser
-    sleep 3
     click_on 'この日報を表示'
 
     click_on 'この日報を編集'
-    fill_in 'タイトル', with: '3日目'
-    fill_in '内容', with: 'RubyGoldが難しい！'
+    fill_in_report_information
 
     click_button '更新する'
     assert_text '日報が更新されました。'
 
     visit report_url(Report.last)
-    assert_text '3日目'
-    assert_text 'RubyGoldが難しい！'
+    check_report_information
   end
 
   test '日報の削除' do
