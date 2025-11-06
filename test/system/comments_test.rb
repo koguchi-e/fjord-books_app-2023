@@ -8,7 +8,7 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: '吾輩は猫である'
     fill_in 'メモ', with: '吾輩わがはいは猫である。'
     fill_in '著者', with: '夏目漱石'
-    attach_file 'book[picture]', Rails.root.join('test/fixtures/files/cat.png')
+    attach_file 'book[picture]', Rails.root.join('test/system/files/cat.png')
 
     click_button '登録する'
     assert_text '本が作成されました。'

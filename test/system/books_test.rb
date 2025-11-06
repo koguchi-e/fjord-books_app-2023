@@ -8,7 +8,7 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: '吾輩は猫である'
     fill_in 'メモ', with: '吾輩わがはいは猫である。'
     fill_in '著者', with: '夏目漱石'
-    attach_file 'book[picture]', Rails.root.join('test/fixtures/files/cat.png')
+    attach_file 'book[picture]', Rails.root.join('test/system/files/cat.png')
 
     click_button '登録する'
     assert_text '本が作成されました。'
@@ -35,7 +35,7 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: '山月記'
     fill_in 'メモ', with: '隴西ろうさいの李徴りちょうは博学才穎さいえい、'
     fill_in '著者', with: '中島敦'
-    attach_file 'book[picture]', Rails.root.join('test/fixtures/files/tiger.png')
+    attach_file 'book[picture]', Rails.root.join('test/system/files/tiger.png')
     click_button '更新する'
 
     assert_text '本が更新されました。'
