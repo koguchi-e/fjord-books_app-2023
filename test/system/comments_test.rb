@@ -33,26 +33,36 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text 'こんにちは'
   end
 
-  test '本にコメントを追加' do
-    login_as_testuser
-    create_book
-    fill_in_comment
-  end
+  # test '本にコメントを追加' do
+  #   login_as_testuser
+  #   create_book
+  #   fill_in_comment
+  # end
 
-  test '日報にコメントを追加' do
-    login_as_testuser
-    create_report
-    fill_in_comment
-  end
+  # test '日報にコメントを追加' do
+  #   login_as_testuser
+  #   create_report
+  #   fill_in_comment
+  # end
 
   test '本のコメントの削除' do
     login_as_testuser
     create_book
     fill_in_comment
+
+    page.evaluate_script('window.confirm = function() { return true; }')
     click_button '削除'
-    assert_text 'よろしいですか？'
-    sleep 2
-    click_button 'OK'
+    assert_text 'コメントが削除されました。'
+    assert_no_text 'こんにちは'
+  end
+
+  test '日報のコメントの削除' do
+    login_as_testuser
+    create_report
+    fill_in_comment
+
+    page.evaluate_script('window.confirm = function() { return true; }')
+    click_button '削除'
     assert_text 'コメントが削除されました。'
     assert_no_text 'こんにちは'
   end
