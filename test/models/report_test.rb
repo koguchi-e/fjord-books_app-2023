@@ -5,7 +5,7 @@ require 'test_helper'
 class ReportTest < ActiveSupport::TestCase
   test 'ユーザーが一致する時、editable?がtrueを返すか' do
     user = create(:user)
-    report = create(:report, user: user)
+    report = create(:report, user:)
     assert report.editable?(user)
   end
 

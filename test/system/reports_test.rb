@@ -7,7 +7,7 @@ class ReportsTest < ApplicationSystemTestCase
     click_on '日報'
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
-  
+
     click_on '日報の新規作成'
     fill_in 'タイトル', with: '2日目'
     fill_in '内容', with: 'テストコードは楽しい、設計が苦手だと気づく'

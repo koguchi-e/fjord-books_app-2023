@@ -32,9 +32,9 @@ class BooksTest < ApplicationSystemTestCase
     click_on 'この本を表示'
     click_on 'この本を編集'
 
-    fill_in 'タイトル', with: '吾輩は猫である2'
-    fill_in 'メモ', with: '続編'
-    fill_in '著者', with: '夏目漱石2世'
+    fill_in 'タイトル', with: '山月記'
+    fill_in 'メモ', with: '隴西ろうさいの李徴りちょうは博学才穎さいえい、'
+    fill_in '著者', with: '中島敦'
     attach_file 'book[picture]', Rails.root.join('test/fixtures/files/tiger.png')
     click_button '更新する'
 
