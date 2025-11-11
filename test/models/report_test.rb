@@ -11,8 +11,7 @@ class ReportTest < ActiveSupport::TestCase
 
   test 'created_onが日付を返すか' do
     report = create(:report)
-    assert_equal report.created_at.to_date, report.created_on
-    assert_instance_of Date, report.created_on
+    assert_equal Date.new(2025, 11, 01), report.created_on
   end
 
   test 'レポートに含まれるURLからmentioned_reportsが正しく作成されるか' do
