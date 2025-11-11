@@ -16,7 +16,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'レポートに含まれるURLからmentioned_reportsが正しく作成されるか' do
-    report = create(:report)
+    report = create(:report, content: "http://localhost:3000/reports/1")
     report.mentioned_reports.each do |m|
       assert_equal 1, m.id
     end
