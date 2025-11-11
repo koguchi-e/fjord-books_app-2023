@@ -14,10 +14,10 @@ class ReportTest < ActiveSupport::TestCase
     assert_equal Date.new(2025, 11, 01), report.created_on
   end
 
-  test 'レポートに含まれるURLからmentioned_reportsが正しく作成されるか' do
-    report = create(:report, content: "http://localhost:3000/reports/1")
-    report.mentioned_reports.each do |m|
-      assert_equal 1, m.id
-    end
+  test 'レポートに含まれるURLからmentioning_reportsが正しく作成されるか' do
+    user = create(:user)
+    mentioned = create(:report, user: user)
+    report = create(:report, user: user, content: "http://localhost:3000/reports/#{mentioned.id}")
+    assert_includes report.mentioning_reports, mentioned
   end
 end
