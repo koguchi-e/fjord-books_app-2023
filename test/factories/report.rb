@@ -5,6 +5,6 @@ FactoryBot.define do
     title { '1日目' }
     content { 'オブジェクト指向が難しかったです。' }
     created_at { Time.current }
-    association :user
+    user
   end
 end
