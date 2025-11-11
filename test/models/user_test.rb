@@ -4,8 +4,8 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test 'name_or_emailが名前を返すか' do
-    user = FactoryBot.create(:user)
-    assert_equal 'テストユーザー', user.name_or_email
+    user = FactoryBot.create(:user, name:"山田太郎")
+    assert_equal '山田太郎', user.name_or_email
   end
 
   test 'name_or_emailがもし名前が空欄ならメールアドレスを返すか' do
