@@ -10,7 +10,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'created_onが日付を返すか' do
-    report = create(:report, created_at: Time.new(2025, 11, 01))
+    report = create(:report, created_at: Time.zone.local(2025, 11, 01))
     assert_equal Date.new(2025, 11, 01), report.created_on
   end
 
