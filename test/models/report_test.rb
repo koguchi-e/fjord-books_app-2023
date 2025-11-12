@@ -29,6 +29,7 @@ class ReportTest < ActiveSupport::TestCase
     create_mention_lists
     mentioned2 = create(:report, user: @user)
     @report.update(content: "http://localhost:3000/reports/#{mentioned2.id}")
+    assert_not_equal @report.mentioned_reports, @mentioned
     assert_includes @report.mentioning_reports, mentioned2
   end
 
