@@ -186,4 +186,11 @@ Report.transaction do
   end
 end
 
+User.create!(
+  email: 'test1@example.com',
+  password: '123456',
+  password_confirmation: '123456',
+  name: 'テスト太郎'
+)
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output

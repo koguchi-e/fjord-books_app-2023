@@ -3,7 +3,13 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'name_or_emailが名前を返すか' do
+    user = create(:user, name:"山田太郎")
+    assert_equal '山田太郎', user.name_or_email
+  end
+
+  test 'name_or_emailがもし名前が空欄ならメールアドレスを返すか' do
+    user = create(:user, name: '', email: 'yamada@example.com')
+    assert_equal 'yamada@example.com', user.name_or_email
+  end
 end
